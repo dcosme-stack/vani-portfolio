@@ -37,7 +37,10 @@ class Video(models.Model):
         choices=Category.choices,
         default=Category.OTHERS,
     )
-    youtube_url = models.URLField()
+    youtube_id = models.CharField(
+        max_length=11,
+        help_text="Paste only the YouTube video ID (11 characters)"
+    )
     is_featured = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
