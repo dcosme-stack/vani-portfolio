@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'pages',
     'media_app',
     'contact',
+    "django_ckeditor_5",
 ]
 
 MIDDLEWARE = [
@@ -139,3 +140,29 @@ MEDIA_ROOT = BASE_DIR / "media"
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Who receives contact form messages
+CONTACT_RECIPIENT_EMAIL = os.getenv("CONTACT_RECIPIENT_EMAIL")
+
+# System sender identity
+DEFAULT_FROM_EMAIL = os.getenv(
+    "DEFAULT_FROM_EMAIL",
+    "no-reply@vaniportfolio.com",
+)
+
+CKEDITOR_5_CONFIGS = {
+    "simple_text": {
+        "toolbar": [
+            "bold", "italic", "link",
+            "|",
+            "bulletedList", "numberedList",
+            "|",
+            "undo", "redo",
+        ],
+        "heading": {
+            "options": [
+                {"model": "paragraph", "title": "Paragraph"},
+            ]
+        },
+    }
+}

@@ -12,7 +12,7 @@
     <div class="lp-right-section">
         <h1>{{ homepage.main_title }}</h1>
         <br />
-        <article>{{ homepage.description }}</article>
+        <article>{{ homepage.description|safe }}</article>
         <br />
         <p class="social-media-icon">
             <a href="{{ site.facebook_url }}" target="_blank"><img src="{% static 'images/socialmedia/facebook.svg' %}" alt="Facebook icon"></a>

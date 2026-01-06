@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<section class="contact" id="contact-section">
+    <h1>Contact</h1>
+
+    {% if messages %}
+        {% for message in messages %}
+            <p class="success">{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+
+    <form method="post" id="contact-form">
+        {% csrf_token %}
+
+        {{ form.non_field_errors }}
+
+        <div>{{ form.firstname }}</div>
+        <div>{{ form.lastname }}</div>
+        <div>{{ form.email }}</div>
+        <div>{{ form.subject }}</div>
+        <div>{{ form.message }}</div>
+
+        <button type="submit">Send message</button>
+    </form>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+  <script src="{% static 'js/contact.js' %}"></script>
+  {% endblock %}

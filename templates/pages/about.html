@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
+<br />
 <div class="mv-container">
     <h1 id="h1-meet-vani">{{ about.main_title }}</h1>
 </div>
@@ -15,7 +16,7 @@
     <img src="{{ article.image.url }}" alt="{{ article.title }}">
     {% endif %}
     <h2>{{ article.title }}</h2>
-    <p>{{ article.description }}</p>
+    <p>{{ article.description|safe }}</p>
 </div>
 {% endfor %}
 

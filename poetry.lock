@@ -37,6 +37,25 @@ argon2 = ["argon2-cffi (>=19.1.0)"]
 bcrypt = ["bcrypt"]
 
 [[package]]
+name = "django-ckeditor-5"
+version = "0.2.19"
+description = "CKEditor 5 for Django."
+optional = false
+python-versions = ">=3.7"
+groups = ["main"]
+files = [
+    {file = "django_ckeditor_5-0.2.19-py3-none-any.whl", hash = "sha256:7644e1b147444ee69e3abbfdbd9fb827ad307780abb26055d9ca3dca4e46f668"},
+    {file = "django_ckeditor_5-0.2.19.tar.gz", hash = "sha256:627e0752d15c915665444b34b4d376855187a93660bdc9193d6b10c856ef843b"},
+]
+
+[package.dependencies]
+Django = ">=2.2"
+Pillow = "*"
+
+[package.extras]
+dev = ["bandit[toml] (==1.8.2)", "black (==25.1.0)", "codespell (==2.4.1)", "coverage (==7.6.10)", "mypy (==1.15.0)", "mypy-extensions (==1.0.0)", "pytest (==8.3.4)", "pytest-cov (==6.0.0)", "pytest-django (==4.9.0)", "pytest-mock (==3.14.0)", "safety (==3.2.14)", "types-setuptools (==75.8.0.20250110)", "typing_extensions (==4.12.2)"]
+
+[[package]]
 name = "django-jazzmin"
 version = "3.0.1"
 description = "Drop-in theme for django admin, that utilises AdminLTE 3 & Bootstrap 4 to make yo' admin look jazzy"
@@ -207,4 +226,4 @@ files = [
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.12"
-content-hash = "ef5c85f8d98a36b3234b1c7c019844da677d805e0890985600153e0841caa675"
+content-hash = "04c4432886490b3e4645859d91ad35a33be24e72987ab403887d6a18642c9c3f"

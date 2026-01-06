@@ -1,5 +1,6 @@
 from django.db import models
 from core.models import FileCleanupModel
+from django_ckeditor_5.fields import CKEditor5Field
 
 # Create your models here.
 class Homepage(FileCleanupModel):
@@ -7,7 +8,10 @@ class Homepage(FileCleanupModel):
         verbose_name = "Homepage"
         verbose_name_plural = "Homepage"
     main_title = models.CharField(max_length=100)
-    description = models.TextField()
+    description = CKEditor5Field(
+        "Description",
+        config_name="simple_text",
+        help_text="You can use bold, italics, lists and links.")
     hero_image = models.ImageField(upload_to="photos/homepage")
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -35,7 +39,10 @@ class Article(FileCleanupModel):
         related_name="articles"
     )
     title = models.CharField(max_length=100)
-    description = models.TextField()
+    description = CKEditor5Field(
+        "Description",
+        config_name="simple_text",
+        help_text="You can use bold, italics, lists and links.")
     image = models.ImageField(upload_to="photos/about")
     order = models.PositiveIntegerField(default=0)
 
@@ -48,8 +55,14 @@ class Resume(FileCleanupModel):
         verbose_name_plural = "Resume"
     main_title = models.CharField(max_length=100)
     full_name = models.CharField(max_length=100)
-    main_info = models.TextField()
-    profile = models.TextField()
+    main_info = CKEditor5Field(
+        "Main_Info",
+        config_name="simple_text",
+        help_text="You can use bold, italics, lists and links.")
+    profile = CKEditor5Field(
+        "Profile",
+        config_name="simple_text",
+        help_text="You can use bold, italics, lists and links.")
     resume_pic = models.ImageField(upload_to="photos/resume")
     resume_file = models.FileField(
         upload_to='files/resume',
@@ -101,7 +114,10 @@ class Experience(models.Model):
         related_name="experiences"
     )
     title = models.CharField(max_length=100)
-    description = models.TextField()
+    description = CKEditor5Field(
+        "Description",
+        config_name="simple_text",
+        help_text="You can use bold, italics, lists and links.")
     order = models.PositiveIntegerField(default=0)
 
     def __str__(self):

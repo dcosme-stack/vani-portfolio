@@ -436,3 +436,99 @@ span.close-modal{
     color: black;
     cursor: pointer;
 }
+
+/*Contact form section*/
+
+/* --- Section Container --- */
+.contact {
+    max-width: 600px;
+    margin: 60px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+/* --- Headline --- */
+.contact h1 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 25px;
+    color: #222;
+}
+
+/* --- Success message --- */
+.contact .success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    padding: 12px 15px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    font-weight: 500;
+    animation: fade-in 0.6s ease;
+}
+
+@keyframes fade-in {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Form --- */
+.contact form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* --- Inputs & Textarea --- */
+.contact input[type="text"],
+.contact input[type="email"],
+.contact textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact input[type="text"]:focus,
+.contact input[type="email"]:focus,
+.contact textarea:focus {
+    border-color: #f08c00;
+    box-shadow: 0 0 5px rgba(240, 140, 0, 0.3);
+    outline: none;
+}
+
+/* --- Textarea specifics --- */
+.contact textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* --- Button --- */
+.contact button {
+    padding: 12px 20px;
+    background-color: #f08c00;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.contact button:hover {
+    background-color: #e07a00;
+}
+
+/* --- Responsive adjustments --- */
+@media (max-width: 640px) {
+    .contact {
+        margin: 40px 20px;
+        padding: 25px;
+    }
+}
