@@ -1,4 +1,5 @@
 from django.db import models
+from core.models import FileCleanupModel
 
 # Create your models here.
 class Category(models.TextChoices):
@@ -7,7 +8,7 @@ class Category(models.TextChoices):
     DRAMA = "drama", "Drama"
     OTHERS = "others", "Others"
 
-class Photo(models.Model):
+class Photo(FileCleanupModel):
     class Meta:
         verbose_name = "Photo"
         verbose_name_plural = "Photos"
@@ -19,7 +20,7 @@ class Photo(models.Model):
         choices=Category.choices,
         default=Category.OTHERS,
     )
-    image = models.ImageField(upload_to="photos/")
+    image = models.ImageField(upload_to="photos/gallery")
     is_featured = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
 

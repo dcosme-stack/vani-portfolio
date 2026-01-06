@@ -6,5 +6,3 @@ class MediaAppConfig(AppConfig):
     name = 'media_app'
     verbose_name = "Media Content"
 
-    def ready(self):
-        import media_app.signals

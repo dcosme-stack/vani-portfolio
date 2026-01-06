@@ -23,6 +23,7 @@ import config.admin
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("", include("media_app.urls")),
+    path("", include("pages.urls")),
 ]
 
 if settings.DEBUG:
