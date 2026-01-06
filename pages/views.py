@@ -7,36 +7,32 @@ from .models import Homepage, About_Vani, Article, Resume, Skill, Reference, Exp
 
 
 def home_view(request):
-  myhomepage = Homepage.objects.first()
-  template = loader.get_template('pages/home.html')
+  homepage = Homepage.objects.first()
+  template = loader.get_template('pages/homepage.html')
   context = {
-    'myhomepage':myhomepage,
+    'homepage':homepage,
     }
 
   return HttpResponse(template.render(context, request))
 
 def about_view(request):
-  myabout = About_Vani.objects.first()
-  myarticles = Article.objects.all()
+  about = About_Vani.objects.prefetch_related("articles").first()
   template = loader.get_template('pages/about.html')
   context = {
-    'myabout': myabout,
-    'myarticles': myarticles,
+    'about': about,
     }
 
   return HttpResponse(template.render(context, request))
 
 def resume_view(request):
-  myresume = Resume.objects.first()
-  myskills = Skill.objects.all()
-  myreferences = Reference.objects.all()
-  myexperiences = Experience.objects.all()
+  resume = Resume.objects.prefetch_related(
+        "skills",
+        "experiences",
+        "references",
+    ).first()
   template = loader.get_template('pages/resume.html')
   context = {
-    'myresume': myresume,
-    'myskills': myskills,
-    'myreferences': myreferences,
-    'myexperiences': myexperiences,
+    'resume': resume,
     }
 
   return HttpResponse(template.render(context, request))

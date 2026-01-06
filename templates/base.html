@@ -9,19 +9,17 @@
 
   {% block meta %}{% endblock %}
 
-  <link rel="stylesheet" href="{% static 'css/main.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
   {% block extra_css %}{% endblock %}
 </head>
 
 <body>
 
-  {% include "base/navbar.html" %}
+  {% include "components/navbar.html" %}
 
-  <main>
-    {% block content %}{% endblock %}
-  </main>
+  {% block content %}{% endblock %}
 
-  {% include "base/footer.html" %}
+  {% include "components/footer.html" %}
 
   <script src="{% static 'js/main.js' %}"></script>
   {% block extra_js %}{% endblock %}

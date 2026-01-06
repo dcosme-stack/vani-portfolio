@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="mv-container">
+    <h1 id="h1-meet-vani">{{ about.main_title }}</h1>
+</div>
+
+{% for article in about.articles.all %}
+{% if forloop.counter0|divisibleby:2 %}
+<div class= "about-vani-left">
+{% else %}
+<div class= "about-vani-right">
+{% endif %}
+    {% if article.image %}
+    <img src="{{ article.image.url }}" alt="{{ article.title }}">
+    {% endif %}
+    <h2>{{ article.title }}</h2>
+    <p>{{ article.description }}</p>
+</div>
+{% endfor %}
+
+{% endblock %}

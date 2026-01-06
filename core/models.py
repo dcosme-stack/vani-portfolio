@@ -4,16 +4,16 @@ from django.dispatch import receiver
 
 # Create your models here.
 class SiteSettings(models.Model):
+    class Meta:
+        verbose_name = "Global Settings"
+        verbose_name_plural = "Global Settings"
     site_name = models.CharField(max_length=100)
-    facebook_icon = models.ImageField(upload_to="photos/socialmedia")
     facebook_url = models.URLField(blank=True)
-    youtube_icon = models.ImageField(upload_to="photos/socialmedia")
     youtube_url = models.URLField(blank=True)
-    instagram_icon = models.ImageField(upload_to="photos/socialmedia")
     instagram_url = models.URLField(blank=True)
-    email_icon = models.ImageField(upload_to="photos/socialmedia")
     email = models.EmailField()
     footer = models.CharField(max_length=100)
+
 
 class FileCleanupModel(models.Model):
     """

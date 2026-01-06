@@ -47,6 +47,7 @@ class Resume(FileCleanupModel):
         verbose_name = "Resume"
         verbose_name_plural = "Resume"
     main_title = models.CharField(max_length=100)
+    full_name = models.CharField(max_length=100)
     main_info = models.TextField()
     profile = models.TextField()
     resume_pic = models.ImageField(upload_to="photos/resume")

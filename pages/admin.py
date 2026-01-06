@@ -66,6 +66,27 @@ class ResumeAdmin(admin.ModelAdmin):
         ExperienceInline,
         ]
     
+    list_display = ("main_title", "profile", "thumbnail")
+    readonly_fields = ("thumbnail_preview",)
+
+    def thumbnail(self, obj):
+        if obj.resume_pic:
+            return format_html(
+                '<img src="{}" style="height: 50px;" />',
+                obj.resume_pic.url
+            )
+        return "-"
+
+    thumbnail.short_description = "Preview"
+
+    def thumbnail_preview(self, obj):
+        if obj.resume_pic:
+            return format_html(
+                '<img src="{}" style="max-height: 300px;" />',
+                obj.resume_pic.url
+            )
+        return "-"
+    
     def has_add_permission(self, request):
         return not Resume.objects.exists()
         
