@@ -5,6 +5,18 @@
     box-sizing: border-box;
 }
 
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+/*Body update for vertical alignment*/
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
 /*Top navigation styling*/
 header.top-nav {
     padding: 3px;
@@ -109,10 +121,10 @@ p.social-media-icon {
 
 /*Footer styling for landing page*/
 footer.lp-footer {
-    background-color: rgb(232, 229, 229);
+    background-color: black;
+    color:white;
     width: 100%;
-    position: fixed;
-    bottom: 0;
+    margin-top: auto;
 }
 
 footer.lp-footer p,
@@ -439,6 +451,14 @@ span.close-modal{
 
 /*Contact form section*/
 
+.site-main {
+    flex: 1;                      /* fills available vertical space */
+    display: flex;
+    align-items: center;          /* vertical centering */
+    justify-content: center;      /* horizontal centering */
+}
+
+
 /* --- Section Container --- */
 .contact {
     max-width: 600px;
@@ -497,7 +517,7 @@ span.close-modal{
 .contact input[type="text"]:focus,
 .contact input[type="email"]:focus,
 .contact textarea:focus {
-    border-color: #f08c00;
+    border-color: maroon;
     box-shadow: 0 0 5px rgba(240, 140, 0, 0.3);
     outline: none;
 }
@@ -511,7 +531,7 @@ span.close-modal{
 /* --- Button --- */
 .contact button {
     padding: 12px 20px;
-    background-color: #f08c00;
+    background-color: maroon;
     color: #fff;
     border: none;
     border-radius: 8px;
@@ -522,7 +542,7 @@ span.close-modal{
 }
 
 .contact button:hover {
-    background-color: #e07a00;
+    background-color: maroon;
 }
 
 /* --- Responsive adjustments --- */

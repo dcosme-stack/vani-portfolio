@@ -1,30 +1,45 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block title %}Vani | Portfolio - Contact Me{% endblock %}
+
 {% block content %}
-<section class="contact" id="contact-section">
-    <h1>Contact</h1>
 
-    {% if messages %}
-        {% for message in messages %}
-            <p class="success">{{ message }}</p>
-        {% endfor %}
-    {% endif %}
+<main class="site-main">
 
-    <form method="post" id="contact-form">
-        {% csrf_token %}
+    <section class="contact" id="contact-section">
+        <h1>GET IN TOUCH</h1>
 
-        {{ form.non_field_errors }}
+        {% if messages %}
+            {% for message in messages %}
+                <p class="success">{{ message }}</p>
+            {% endfor %}
+        {% endif %}
 
-        <div>{{ form.firstname }}</div>
-        <div>{{ form.lastname }}</div>
-        <div>{{ form.email }}</div>
-        <div>{{ form.subject }}</div>
-        <div>{{ form.message }}</div>
+        <form method="post" id="contact-form">
+            {% csrf_token %}
 
-        <button type="submit">Send message</button>
-    </form>
-</section>
+            {{ form.non_field_errors }}
+
+            <div>{{ form.firstname }}</div>
+            <div>{{ form.lastname }}</div>
+            <div>{{ form.email }}</div>
+            <div>{{ form.phone }}</div>
+            <div>{{ form.subject }}</div>
+            <div>{{ form.message }}</div>
+
+            <button type="submit">Send message</button>
+        </form>
+
+        <br />
+        <p class="social-media-icon">
+            <a href="{{ site.facebook_url }}" target="_blank"><img src="{% static 'images/socialmedia/facebook.svg' %}" alt="Facebook icon"></a>
+            <a href="{{ site.youtube_url }}" target="_blank"><img src="{% static 'images/socialmedia/youtube.svg' %}" alt="Youtube icon"></a>
+            <a href="{{ site.instagram_url }}" target="_blank"><img src="{% static 'images/socialmedia/instagram.svg' %}" alt="Instagram icon"></a>
+        </p>
+
+    </section>
+</main>
 {% endblock %}
 
 {% block extra_js %}

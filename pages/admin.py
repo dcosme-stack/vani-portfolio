@@ -56,7 +56,7 @@ class ReferenceInline(admin.TabularInline):
 class ExperienceInline(admin.TabularInline):
     model = Experience
     extra = 0
-    #fields = ("Title", "Description", "Order")
+    fields = ("order","title", "description")
 
 @admin.register(Resume)
 class ResumeAdmin(admin.ModelAdmin):

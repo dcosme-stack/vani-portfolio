@@ -1,8 +1,11 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block title %}Vani | Portfolio - Homepage{% endblock %}
+
+
 {% block content %}
-<br />
+<main class="site-main">
 <section class="lp-container">
     {% if homepage.hero_image %}
     <div class="lp-left-section">
@@ -18,8 +21,8 @@
             <a href="{{ site.facebook_url }}" target="_blank"><img src="{% static 'images/socialmedia/facebook.svg' %}" alt="Facebook icon"></a>
             <a href="{{ site.youtube_url }}" target="_blank"><img src="{% static 'images/socialmedia/youtube.svg' %}" alt="Youtube icon"></a>
             <a href="{{ site.instagram_url }}" target="_blank"><img src="{% static 'images/socialmedia/instagram.svg' %}" alt="Instagram icon"></a>
-            <a href="{{ site.email }}" target="_blank"><img src="{% static 'images/socialmedia/email.svg' %}" alt="Email icon"></a>
         </p>
     </div>
 </section>
+</main>
 {% endblock %}

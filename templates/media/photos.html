@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Vani | Portfolio - My Photos{% endblock %}
+
+{% block content %}
+<br />
+<div class="standard-container">
+        <h1 class="h1-standard">MY PHOTOS</h1>
+</div>
+
+{% include "components/gallery.html" with items=photos %}
+
+
+{% endblock %}
+
+
+  {% block extra_js %}
+  <script src="{% static 'js/photos_modal.js' %}"></script>
+  {% endblock %}

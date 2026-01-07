@@ -1,23 +1,27 @@
 {% extends "base.html" %}
 
-{% block content %}
-<br />
-<div class="mv-container">
-    <h1 id="h1-meet-vani">{{ about.main_title }}</h1>
-</div>
+{% block title %}Vani | Portfolio - About Vani{% endblock %}
 
-{% for article in about.articles.all %}
-{% if forloop.counter0|divisibleby:2 %}
-<div class= "about-vani-left">
-{% else %}
-<div class= "about-vani-right">
-{% endif %}
-    {% if article.image %}
-    <img src="{{ article.image.url }}" alt="{{ article.title }}">
+{% block body_css %}class="dark"{% endblock %}
+
+{% block content %}
+    <br />
+    <div class="mv-container">
+        <h1 id="h1-meet-vani">{{ about.main_title }}</h1>
+    </div>
+
+    {% for article in about.articles.all %}
+    {% if forloop.counter0|divisibleby:2 %}
+    <div class= "about-vani-left">
+    {% else %}
+    <div class= "about-vani-right">
     {% endif %}
-    <h2>{{ article.title }}</h2>
-    <p>{{ article.description|safe }}</p>
-</div>
+        {% if article.image %}
+        <img src="{{ article.image.url }}" alt="{{ article.title }}">
+        {% endif %}
+        <h2>{{ article.title }}</h2>
+        <p>{{ article.description|safe }}</p>
+    </div>
 {% endfor %}
 
 {% endblock %}
