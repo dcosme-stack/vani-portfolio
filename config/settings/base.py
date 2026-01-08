@@ -166,3 +166,7 @@ CKEDITOR_5_CONFIGS = {
         },
     }
 }
+
+JAZZMIN_SETTINGS = {
+    "custom_css": "core/jazzmin_admin.css",
+}

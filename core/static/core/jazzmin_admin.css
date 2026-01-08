@@ -1,0 +1,12 @@
+/* Limit CKEditor container */
+.ck-editor-container {
+    max-width: 600px;
+}
+
+/* Limit the editing area inside CKEditor5 */
+.ck-editor-container {
+    max-width: 600px;
+    min-height: 300px;  /* optional for better UX */
+    line-height: 1.6;
+    font-size: 15px;     /* center editable area */
+}

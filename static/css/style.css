@@ -248,6 +248,31 @@ div.about-vani-right p {
 
 /*Gallery*/
 
+/*Gallery Filters*/
+
+div.categories{
+    padding-top: 20px;
+}
+
+div.categories a{
+    display:inline-block;
+    padding:8px 16px;
+    margin-right: 5px;
+    vertical-align:middle;
+    overflow:hidden;
+    text-decoration:none;
+    color:black;
+    background-color: lightgrey;
+}
+
+div.categories a.active{
+    background-color: maroon;
+    color: white;
+    font-weight: bold;
+}
+
+/*Gallery layout*/
+
 .gallery-container{
     display: grid;
     width: 90%;
@@ -384,6 +409,22 @@ div.resume-experience{
 
 p.contact-social-media-icon {
     text-align: left;
+}
+
+p.call-to-action {
+    text-align: center;
+    margin: 10px;
+}
+
+p.call-to-action a {
+    display: inline-block;
+    text-align: center;
+    background-color: black;
+    color: white;
+    text-decoration-line: none;
+    letter-spacing: 4px;
+    padding: 10px;
+    font-weight: bold;
 }
 
 .contact-social-media-icon img {

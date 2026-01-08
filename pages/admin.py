@@ -6,13 +6,13 @@ from .models import Homepage, About_Vani, Article, Resume, Skill, Reference, Exp
 
 @admin.register(Homepage)
 class HomepageAdmin(admin.ModelAdmin):
-    list_display = ("main_title", "description", "thumbnail")
+    list_display = ("main_title", "thumbnail")
     readonly_fields = ("thumbnail_preview",)
 
     def thumbnail(self, obj):
         if obj.hero_image:
             return format_html(
-                '<img src="{}" style="height: 50px;" />',
+                '<img src="{}" style="height: 200px;" />',
                 obj.hero_image.url
             )
         return "-"
@@ -66,18 +66,8 @@ class ResumeAdmin(admin.ModelAdmin):
         ExperienceInline,
         ]
     
-    list_display = ("main_title", "profile", "thumbnail")
+    list_display = ("main_title",)
     readonly_fields = ("thumbnail_preview",)
-
-    def thumbnail(self, obj):
-        if obj.resume_pic:
-            return format_html(
-                '<img src="{}" style="height: 50px;" />',
-                obj.resume_pic.url
-            )
-        return "-"
-
-    thumbnail.short_description = "Preview"
 
     def thumbnail_preview(self, obj):
         if obj.resume_pic:

@@ -4,12 +4,30 @@
 {% block title %}Vani | Portfolio - My Videos{% endblock %}
 
 {% block content %}
+
 <br />
 <div class="standard-container">
         <h1 class="h1-standard">MY VIDEOS</h1>
+
+        <div class="categories">
+                <a href="{% url 'media:video_list' %}"
+                class="{% if not current_category %}active{% endif %}">
+                All
+                </a>
+
+                {% for value, label in categories %}
+                <a href="{% url 'media:video_list_by_category' value %}"
+                class="{% if current_category == value %}active{% endif %}">
+                {{ label }}
+                </a>
+                {% endfor %}
+        </div>
 </div>
 
 {% include "components/gallery.html" with items=videos %}
 
+<p class="call-to-action">
+    <a href="{% url 'contact:contact' %}">LET'S GET IN TOUCH &xrarr;</a>
+</p>
 
 {% endblock %}

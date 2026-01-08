@@ -8,7 +8,7 @@
 <main class="site-main">
 
     <section class="contact" id="contact-section">
-        <h1>GET IN TOUCH</h1>
+        <h1>LET'S GET IN TOUCH</h1>
 
         {% if messages %}
             {% for message in messages %}
@@ -37,9 +37,13 @@
             <a href="{{ site.youtube_url }}" target="_blank"><img src="{% static 'images/socialmedia/youtube.svg' %}" alt="Youtube icon"></a>
             <a href="{{ site.instagram_url }}" target="_blank"><img src="{% static 'images/socialmedia/instagram.svg' %}" alt="Instagram icon"></a>
         </p>
-
     </section>
 </main>
+
+<p class="call-to-action">
+    <a href="{% url 'pages:homepage' %}">BACK TO HOME &xrarr;</a>
+</p>
+
 {% endblock %}
 
 {% block extra_js %}
