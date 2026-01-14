@@ -1,0 +1,136 @@
+/* ==========================
+   Vani Resume Section
+   ========================== */
+
+li{
+  list-style-type: disc !important;
+}
+
+div > p{
+  text-align: justify;
+}
+
+.resume-container{
+  width: 90%;
+  margin: 1rem auto;
+  padding: 1rem 1rem;
+}
+
+.resume-container img{
+  display: inline;
+}
+
+.resume-header,
+.resume-profile,
+.resume-body { 
+  width: 90%;
+  margin: 0 auto;
+  padding: 1rem 1rem;
+}
+
+.resume-header,
+.resume-profile,
+.resume-body { 
+  background-color: #fbf8f8;
+  border: 1px solid #000;
+}
+
+.resume-container{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.resume-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.resume-header img{
+    border-radius: 50%;
+}
+
+
+h1 {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  line-height: 1.2;
+  color: maroon;
+}
+
+h3{
+  border-top: 1px dotted #000;
+  padding-top: 1rem;
+}
+
+div.resume-skills-ref{
+  width: 100%;
+  height: auto;
+}
+
+div.resume-skills, div.resume-reference{
+  width: 100%;
+  list-style-position: inside;
+}
+
+
+.skill-total{
+  width: 50%;
+  height: 4px;
+  background-color: lightgray;
+  margin: 3px 0px;
+}
+
+.skill-progress{
+  height: 4px;
+  width: var(--level);
+  background-color: rgb(91, 151, 91);
+}
+
+.resume-reference ul{
+  margin: 0;
+  padding: 0;
+}
+
+div.resume-experience{
+  width: 100%;
+}
+
+.resume-experience h3{
+  color: maroon;
+}
+
+
+
+/* ==========================
+   Tablet & Up
+   ========================== */
+
+@media (min-width: 1024px) {
+    .resume-container,
+    .resume-header,
+    .resume-profile,
+    .resume-body { 
+    width: 70%;
+    }
+
+    .resume-body{
+    display: flex;
+    }
+
+    div.resume-skills-ref{
+    width: 40%;
+    height: auto; 
+    margin-right: 1rem; 
+    }
+
+  }
+
+@media (min-width: 1540px) {
+  .resume-container,
+    .resume-header,
+    .resume-profile,
+    .resume-body { 
+    width: 60%;
+    }
+}

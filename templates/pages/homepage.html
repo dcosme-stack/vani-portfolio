@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}Vani | Portfolio - Homepage{% endblock %}
-
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/pages/homepage.css' %}">
+{% endblock %}
 
 {% block content %}
-<main class="site-main">
 <section class="lp-container">
     {% if homepage.hero_image %}
     <div class="lp-left-section">
@@ -14,18 +14,18 @@
     {% endif %}
     <div class="lp-right-section">
         <h1>{{ homepage.main_title }}</h1>
-        <br />
+
         <article>{{ homepage.description|safe }}</article>
-        <br />
+
         <p class="social-media-icon">
             <a href="{{ site.facebook_url }}" target="_blank"><img src="{% static 'images/socialmedia/facebook.svg' %}" alt="Facebook icon"></a>
             <a href="{{ site.youtube_url }}" target="_blank"><img src="{% static 'images/socialmedia/youtube.svg' %}" alt="Youtube icon"></a>
             <a href="{{ site.instagram_url }}" target="_blank"><img src="{% static 'images/socialmedia/instagram.svg' %}" alt="Instagram icon"></a>
         </p>
+        
         <p class="call-to-action">
-            <a href="{% url 'contact:contact' %}">CONTACT ME&xrarr;</a>
+            <a href="{% url 'pages:about' %}">FIND OUT MORE &xrarr;</a>
         </p>
     </div>
 </section>
-</main>
 {% endblock %}

@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.utils.html import format_html
-from .models import Homepage, About_Vani, Article, Resume, Skill, Reference, Experience
+from .models import Homepage, About_Vani, Article, Resume, Skill, Language, Reference, Experience
 
 # Register your models here.
 
@@ -39,6 +39,27 @@ class ArticleInline(admin.TabularInline):
 @admin.register(About_Vani)
 class About_VaniAdmin(admin.ModelAdmin):
     inlines = [ArticleInline]
+
+    list_display = ("main_title", "main_description","thumbnail")
+    readonly_fields = ("thumbnail_preview",)
+
+    def thumbnail(self, obj):
+        if obj.main_picture:
+            return format_html(
+                '<img src="{}" style="height: 200px;" />',
+                obj.main_picture.url
+            )
+        return "-"
+
+    thumbnail.short_description = "Preview"
+
+    def thumbnail_preview(self, obj):
+        if obj.main_picture:
+            return format_html(
+                '<img src="{}" style="max-height: 300px;" />',
+                obj.main_picture.url
+            )
+        return "-"
     
     def has_add_permission(self, request):
         return not About_Vani.objects.exists()
@@ -47,6 +68,10 @@ class SkillInline(admin.TabularInline):
     model = Skill
     extra = 0
     #fields = ("Skill Name", "Skill Level")
+
+class LanguageInline(admin.TabularInline):
+    model = Language
+    extra = 0
 
 class ReferenceInline(admin.TabularInline):
     model = Reference
@@ -62,6 +87,7 @@ class ExperienceInline(admin.TabularInline):
 class ResumeAdmin(admin.ModelAdmin):
     inlines = [
         SkillInline,
+        LanguageInline,
         ReferenceInline,
         ExperienceInline,
         ]

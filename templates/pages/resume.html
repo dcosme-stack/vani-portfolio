@@ -1,17 +1,18 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}Vani | Portfolio - My Resume{% endblock %}
-
-{% block body_css %}class="dark"{% endblock %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/pages/resume.css' %}">
+{% endblock %}
 
 {% block content %}
 
-<br />
 <div class="resume-container">
     <h1 class="h1-standard">{{ resume.main_title }}</h1>
         {% if resume.resume_file %}
-        <a href="{{ resume.resume_file.url }}" download target="_blank"><img src="{% static 'images/docs/pdf.svg' %}" alt="PDF logo" width="60px" height="60px"></a>
+        <div><a href="{{ resume.resume_file.url }}" download target="_blank">
+            <img src="{% static 'images/docs/pdf.svg' %}" alt="Download Resume" title="Download my resume" width="60px" height="60px">
+        </a></div>
         {% endif %}
 </div>
 
@@ -43,6 +44,15 @@
             </div>
             {% endfor %}
         </div>
+        <div class="resume-skills">
+            <h2>LANGUAGES</h2>
+            {% for language in resume.languages.all %}
+            <p>{{ language.language_name }}</p>
+            <div class="skill-total">
+                    <div class="skill-progress" style="--level: {{ language.language_level }}%;"></div>
+            </div>
+            {% endfor %}
+        </div>
 
         <div class="resume-reference">
             <h2>REFERENCES</h2>
@@ -59,7 +69,6 @@
         {% for exp in resume.experiences.all %}
         <h3>{{ exp.title }}</h3>
         <p>{{ exp.description|safe }}</p>
-        <br />
         {% endfor %}
     </div>
 </div>

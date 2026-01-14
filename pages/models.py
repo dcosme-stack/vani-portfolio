@@ -23,6 +23,15 @@ class About_Vani(models.Model):
         verbose_name = "About"
         verbose_name_plural = "About"
     main_title = models.CharField(max_length=100)
+    main_description = CKEditor5Field(
+        "Description",
+        config_name="simple_text",
+        help_text="You can use bold, italics, lists and links.")
+    main_picture = models.ImageField(
+        upload_to="photos/about",
+        blank=True,
+        null=True
+        )
 
     def __str__(self):
         return self.main_title
@@ -88,6 +97,21 @@ class Skill(models.Model):
 
     def __str__(self):
         return self.skill_name
+    
+class Language(models.Model):
+    class Meta:
+        verbose_name = "Language"
+        verbose_name_plural = "Languages"
+    resume = models.ForeignKey(
+        Resume,
+        on_delete=models.CASCADE,
+        related_name="languages"
+    )
+    language_name = models.CharField(max_length=100)
+    language_level = models.PositiveIntegerField(default=100)
+
+    def __str__(self):
+        return self.language_name
     
 class Reference(models.Model):
     class Meta:

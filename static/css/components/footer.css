@@ -1,0 +1,16 @@
+/* ==========================
+   Footer
+   ========================== */
+
+footer {
+  margin:0;
+  padding:0;
+  text-align: center;
+  font-size: 0.9rem;
+  border-top: 1px solid #eee;
+}
+
+footer p {
+  margin: 0;
+  padding: 0.5rem;
+}

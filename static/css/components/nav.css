@@ -1,0 +1,139 @@
+/* ==========================
+   Header Wrapper
+   ========================== */
+
+.top-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: #fff;
+  border-bottom: 1px solid #eee;
+}
+
+/* ==========================
+   MOBILE FIRST (default)
+   ========================== */
+
+/* Show mobile nav */
+.mobile-nav {
+  display: block;
+  padding: 0;
+}
+
+/* Hide desktop nav */
+.desktop-nav {
+  display: none;
+}
+
+/* Hamburger button */
+
+.mobile-nav div{
+  display: block;
+  margin: 0;
+  border-bottom: 1px solid grey;
+  background-color: rgb(243, 240, 240);
+  padding: 0.5rem 1rem;
+}
+
+.mobile-nav button{  
+  background-color: rgb(243, 240, 240);
+}
+
+
+.hamburger {
+  border: none;
+  background-color: #fff;
+  list-style: none;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0.5rem 0;
+  user-select: none;
+}
+
+/* Mobile menu */
+.mobile-menu {
+  margin: 1rem 0 0;
+  padding: 0;
+}
+
+.mobile-menu li {
+  list-style: none;
+  border-top: 1px solid #eee;
+}
+
+.mobile-menu a {
+  display: block;
+  padding: 0.75rem 0;
+  font-size: 1rem;
+}
+
+.mobile-menu a:hover {
+  background-color: rgb(243, 240, 240);
+}
+
+/* Active link */
+.top-nav-active a {
+  font-weight: 700;
+  color: maroon !important;
+}
+
+/* ==========================
+   TABLET AND HIGHER BREAKPOINT
+   ========================== */
+
+@media (min-width: 1024px) {
+  /* Hide mobile nav */
+  .mobile-nav {
+    display: none;
+  }
+
+  /* Show desktop nav */
+  
+
+  /* Top navigation in tablet and + */
+  .top-nav {
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    width: 100%;
+    position: fixed;
+    top: 0;
+    background-color: white;
+    padding: 0.3rem;
+  }
+
+  .desktop-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0 1rem;
+  }
+
+  ul.left-top-nav, ul.right-top-nav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 1rem;
+  }
+
+  ul.left-top-nav li, ul.right-top-nav li{
+    display: inline-block;
+    font-size: large
+  }
+
+  
+
+  .desktop-nav a {
+    color: black;
+    text-decoration-line: none;
+    letter-spacing: 4px !important;
+    padding: 3px;
+    display: block;
+    font-weight: bold;
+  }
+
+  .desktop-nav a:hover {
+    background-color: rgb(232, 229, 229);
+  }
+
+}

@@ -1,0 +1,21 @@
+/* ==========================
+   Call To Action
+   ========================== */
+
+p.call-to-action {
+  display: block;
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.call-to-action a {
+  display: inline-block;
+  padding: 0.75rem 1.25rem;
+  font-weight: 600;
+  color: maroon;
+  background-color: rgb(243, 240, 240);
+}
+
+.call-to-action a:hover {
+  font-weight: 700;
+}

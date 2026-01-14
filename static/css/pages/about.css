@@ -1,0 +1,66 @@
+/* ==========================
+   About Vani Section
+
+   ========================== */
+
+
+
+.mv-container { 
+  width: 90%;
+  margin: 1rem auto;
+  padding: 1rem 1rem;
+  
+}
+
+.mv-container div{
+  text-align: justify;
+}
+
+h1 {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  line-height: 1.2;
+  color: maroon;
+  text-align: center;
+}
+
+h2 {
+    text-align: center;
+}
+
+.mv_profile img{
+    width: 100%;
+    }
+
+.mv_article_img{
+    width: 100%;
+}
+
+
+
+/* ==========================
+   Tablet & Up
+   ========================== */
+
+@media (min-width: 1024px) {
+  
+
+    .mv-container { 
+      width: 60%;
+      margin: 1rem auto;
+      padding: 1rem 1rem;
+    }
+
+    .mv_profile img{
+      width: 100%;
+    }
+
+    h1 {
+      text-align:center;
+    }
+  }
+
+@media (min-width: 1540px) {
+    .mv-container { 
+      width: 50%;
+    }
+}

@@ -1,44 +1,43 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}Vani | Portfolio - Contact Me{% endblock %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/contact/contact.css' %}">
+{% endblock %}
 
 {% block content %}
 
-<main class="site-main">
 
-    <section class="contact" id="contact-section">
-        <h1>LET'S GET IN TOUCH</h1>
+<section class="contact" id="contact-section">
+    <h1>CONTACT ME</h1>
 
-        {% if messages %}
-            {% for message in messages %}
-                <p class="success">{{ message }}</p>
-            {% endfor %}
-        {% endif %}
+    {% if messages %}
+        {% for message in messages %}
+            <p class="success">{{ message }}</p>
+        {% endfor %}
+    {% endif %}
 
-        <form method="post" id="contact-form">
-            {% csrf_token %}
+    <form method="post" id="contact-form">
+        {% csrf_token %}
 
-            {{ form.non_field_errors }}
+        {{ form.non_field_errors }}
 
-            <div>{{ form.firstname }}</div>
-            <div>{{ form.lastname }}</div>
-            <div>{{ form.email }}</div>
-            <div>{{ form.phone }}</div>
-            <div>{{ form.subject }}</div>
-            <div>{{ form.message }}</div>
+        <div>{{ form.firstname }}</div>
+        <div>{{ form.lastname }}</div>
+        <div>{{ form.email }}</div>
+        <div>{{ form.phone }}</div>
+        <div>{{ form.subject }}</div>
+        <div>{{ form.message }}</div>
 
-            <button type="submit">Send message</button>
-        </form>
+        <button type="submit">Send message</button>
+    </form>
+</section>
 
-        <br />
-        <p class="social-media-icon">
-            <a href="{{ site.facebook_url }}" target="_blank"><img src="{% static 'images/socialmedia/facebook.svg' %}" alt="Facebook icon"></a>
-            <a href="{{ site.youtube_url }}" target="_blank"><img src="{% static 'images/socialmedia/youtube.svg' %}" alt="Youtube icon"></a>
-            <a href="{{ site.instagram_url }}" target="_blank"><img src="{% static 'images/socialmedia/instagram.svg' %}" alt="Instagram icon"></a>
-        </p>
-    </section>
-</main>
+<p class="social-media-icon">
+    <a href="{{ site.facebook_url }}" target="_blank"><img src="{% static 'images/socialmedia/facebook.svg' %}" alt="Facebook icon"></a>
+    <a href="{{ site.youtube_url }}" target="_blank"><img src="{% static 'images/socialmedia/youtube.svg' %}" alt="Youtube icon"></a>
+    <a href="{{ site.instagram_url }}" target="_blank"><img src="{% static 'images/socialmedia/instagram.svg' %}" alt="Instagram icon"></a>
+</p>
 
 <p class="call-to-action">
     <a href="{% url 'pages:homepage' %}">BACK TO HOME &xrarr;</a>

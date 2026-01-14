@@ -6,6 +6,12 @@ from django.core.mail import send_mail
 
 
 def contact_view(request):
+    seo = {
+        "title": f"Vanishree Kulkarni – Contact",
+        "description": "Get in touch with Vanishree Kulkarni.",
+        "image": request.build_absolute_uri("/static/images/og/og-video.jpg"),
+    }
+
     if request.method == "POST":
         form = ContactForm(request.POST)
         if form.is_valid():
@@ -25,4 +31,4 @@ def contact_view(request):
     else:
         form = ContactForm()
 
-    return render(request, "contact/contact.html", {"form": form})
+    return render(request, "contact/contact.html", {"form": form, "seo":seo})
