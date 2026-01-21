@@ -17,24 +17,36 @@
             </div>
         
 
-        
-        {% for article in about.articles.all %}
-        {% if forloop.counter0|divisibleby:2 %}
-        <div class= "about-vani-left">
-        {% else %}
-        <div class= "about-vani-right">
-        {% endif %}
-            <h2>{{ article.title }}</h2>
-            {% if article.image %}
-            <img src="{{ article.image.url }}" alt="{{ article.title }}" title="{{ article.title }}" class="mv_article_img">
-            {% endif %}
-            <p>{{ article.description|safe }}</p>
+        <div class="stack-wrapper">
+            {% for article in about.articles.all %}
+            <div class="panel about-article-{{ forloop.counter}}">
+                <div class="article-title-section">
+                    <h2>{{ article.title }}</h2>
+                    <div class="article-counter">{{ forloop.counter}}</div>
+                </div>
+                {% if article.image %}
+                <div class="article-image-section">
+                    <img
+                    src="{{ article.image.url }}"
+                    alt="{{ article.title }}"
+                    title="{{ article.title }}"
+                    class="mv_article_img">
+                </div>
+                {% endif %}
+                <div class="article-desc-section">
+                    <p>{{ article.description|safe }}</p>
+                </div>
+            </div>
+            {% if forloop.last%}
+            <div class="panel about-article-end">
+                <h2>DO YOU WANT TO FIND OUT MORE?</h2>
+                <div class="call-to-action">
+                    <a href="{% url 'pages:resume' %}">CHECK OUT MY RESUME &xrarr;</a>
+                </div>
+            </div>
+                {% endif %}
+        {% endfor %}
         </div>
-    {% endfor %}
     </div>
-
-<p class="call-to-action">
-    <a href="{% url 'pages:resume' %}">CHECK OUT MY RESUME &xrarr;</a>
-</p>
 
 {% endblock %}

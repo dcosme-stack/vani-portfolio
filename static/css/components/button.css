@@ -8,14 +8,14 @@ p.call-to-action {
   text-align: center;
 }
 
-.call-to-action a {
+.call-to-action a, a.call-to-action {
   display: inline-block;
   padding: 0.75rem 1.25rem;
   font-weight: 600;
   color: maroon;
-  background-color: rgb(243, 240, 240);
+  background-color: #eee;
 }
 
-.call-to-action a:hover {
+.call-to-action a:hover, a.call-to-action:hover {
   font-weight: 700;
 }

@@ -6,26 +6,25 @@
 {% endblock %}
 
 {% block content %}
-<section class="lp-container">
+<section class="hero">
     {% if homepage.hero_image %}
-    <div class="lp-left-section">
-        <img src="{{ homepage.hero_image.url }}" alt="Hero Image - Vanishree Kulkarni" title="Vanishree Kulkarni" />
-    </div>
+        <img
+            src="{{ homepage.hero_image.url }}"
+            alt="Hero Image - Vanishree Kulkarni"
+            title="Vanishree Kulkarni"
+            alt="Portrait of actress Vanishree Kulkarni"
+            loading="eager"
+            fetchpriority="high"
+            class="hero_image"
+        />
+
+        <div class="hero_overlay"></div>
+
+        <div class="hero_content">
+            <h1>{{ homepage.main_title }}</h1>
+            <p>{{ homepage.description|safe }}</p>
+            <a href="{% url 'pages:about' %}" class="call-to-action">FIND OUT MORE &xrarr;</a>
+        </div>
     {% endif %}
-    <div class="lp-right-section">
-        <h1>{{ homepage.main_title }}</h1>
-
-        <article>{{ homepage.description|safe }}</article>
-
-        <p class="social-media-icon">
-            <a href="{{ site.facebook_url }}" target="_blank"><img src="{% static 'images/socialmedia/facebook.svg' %}" alt="Facebook icon"></a>
-            <a href="{{ site.youtube_url }}" target="_blank"><img src="{% static 'images/socialmedia/youtube.svg' %}" alt="Youtube icon"></a>
-            <a href="{{ site.instagram_url }}" target="_blank"><img src="{% static 'images/socialmedia/instagram.svg' %}" alt="Instagram icon"></a>
-        </p>
-        
-        <p class="call-to-action">
-            <a href="{% url 'pages:about' %}">FIND OUT MORE &xrarr;</a>
-        </p>
-    </div>
 </section>
 {% endblock %}

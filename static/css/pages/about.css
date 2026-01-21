@@ -3,17 +3,10 @@
 
    ========================== */
 
-
-
 .mv-container { 
-  width: 90%;
-  margin: 1rem auto;
-  padding: 1rem 1rem;
-  
-}
-
-.mv-container div{
-  text-align: justify;
+  max-width: 100vw;
+  padding: 0;
+  margin: 0;
 }
 
 h1 {
@@ -23,17 +16,121 @@ h1 {
   text-align: center;
 }
 
-h2 {
-    text-align: center;
+.mv_profile{
+  width: 80%;
+  height: 100vh;
+  margin: 2rem auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: justify;
 }
 
 .mv_profile img{
-    width: 100%;
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 1rem;
     }
 
-.mv_article_img{
-    width: 100%;
+.stack-wrapper {
+  max-width: 100vw;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
 }
+
+.panel {
+  position: sticky;
+  top: var(--nav-height);
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+.about-article-1 {
+  background: #F8F8F8;
+  z-index: 1;
+}
+
+.about-article-2 {
+  background: #9589d3;
+  z-index: 2;
+}
+
+.about-article-3 {
+  background: #6dc9bc;
+  z-index: 3;
+}
+
+.about-article-4 {
+  background: #ffdce0;
+  z-index: 4;
+}
+
+.about-article-5 {
+  background: #f19ec2;
+  z-index: 4;
+}
+
+.about-article-end {
+  background: #ffffff;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-article-end h2 {
+ width: 80%;
+ margin: 0 auto 2rem auto;
+ text-align: center;
+
+}
+
+.article-title-section{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  margin: 0 auto;
+  font-weight: 700;
+  padding-bottom: 1rem;
+}
+
+.article-counter{
+  border: 3px solid black;
+  padding: 0.5rem 0.9rem;
+  border-radius: 50%;
+}
+
+.article-image-section{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 80%;
+  margin: 0 auto;
+  padding-bottom: 1rem;
+}
+
+
+.article-desc-section{
+  display: block;
+  text-align: justify;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.mv_article_img{
+    max-width: 100%;
+    height: auto;
+}
+
+
 
 
 
@@ -45,13 +142,12 @@ h2 {
   
 
     .mv-container { 
-      width: 60%;
-      margin: 1rem auto;
-      padding: 1rem 1rem;
+      max-width: 100vw;
     }
 
     .mv_profile img{
-      width: 100%;
+      max-width: 100%;
+      height: auto;
     }
 
     h1 {
@@ -61,6 +157,6 @@ h2 {
 
 @media (min-width: 1540px) {
     .mv-container { 
-      width: 50%;
+      max-width: 100vw;
     }
 }

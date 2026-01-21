@@ -4,7 +4,7 @@
 
 .standard-container{
     width: 90%;
-    margin: 1rem auto;
+    margin: 3rem auto 2rem auto;
     display: flex;
     flex-direction:column;
 }
@@ -18,10 +18,11 @@ div.categories{
 
 div.categories a{
     display:inline-block;
-    padding:0.3rem 1rem;
+    padding:0.3rem 0.6rem;
     vertical-align:middle;
     overflow:hidden;
     text-decoration:none;
+    text-align: center;
     color:black;
     background-color: lightgrey;
 }
@@ -139,6 +140,11 @@ div.gallery-container > div > div.video-description, div.gallery-container > div
     .gallery-container{
         grid-template-columns: 1fr 1fr 1fr;
     }
+
+        div.categories a{
+        padding:0.3rem 1rem;
+    }
+
 }
 
 

@@ -1,34 +1,18 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const button = document.querySelector(".hamburger");
-    const menu = document.getElementById("mobile-menu");
+  const hamburger = document.querySelector('.hamburger');
+  const menu = document.getElementById('mobile-menu');
+  const closeBtn = document.querySelector('.mobile-close');
 
-    if (!button || !menu) return;
+  function openMenu() {
+    menu.classList.add('open');
+    document.body.classList.add('menu-open');
+    hamburger.setAttribute('aria-expanded', 'true');
+  }
 
-    button.addEventListener("click", () => {
-        const isOpen = menu.classList.toggle("open");
+  function closeMenu() {
+    menu.classList.remove('open');
+    document.body.classList.remove('menu-open');
+    hamburger.setAttribute('aria-expanded', 'false');
+  }
 
-        button.setAttribute("aria-expanded", isOpen);
-
-        if (isOpen) {
-            menu.removeAttribute("hidden");
-        } else {
-            menu.setAttribute("hidden", "");
-        }
-    });
-});
-
-document.addEventListener("click", (event) => {
-    if (!menu.contains(event.target) && !button.contains(event.target)) {
-        menu.classList.remove("open");
-        menu.setAttribute("hidden", "");
-        button.setAttribute("aria-expanded", "false");
-    }
-});
-
-menu.querySelectorAll("a").forEach(link => {
-    link.addEventListener("click", () => {
-        menu.classList.remove("open");
-        menu.setAttribute("hidden", "");
-        button.setAttribute("aria-expanded", "false");
-    });
-});
+  hamburger.addEventListener('click', openMenu);
+  closeBtn.addEventListener('click', closeMenu);

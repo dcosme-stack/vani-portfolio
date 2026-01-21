@@ -12,7 +12,7 @@ div > p{
 
 .resume-container{
   width: 90%;
-  margin: 1rem auto;
+  margin: 3rem auto 1rem auto;
   padding: 1rem 1rem;
 }
 
@@ -32,7 +32,6 @@ div > p{
 .resume-profile,
 .resume-body { 
   background-color: #fbf8f8;
-  border: 1px solid #000;
 }
 
 .resume-container{
@@ -47,10 +46,15 @@ div > p{
     justify-content: space-between;
 }
 
-.resume-header img{
-    border-radius: 50%;
+.resume-header ul{
+   list-style-position:inside;
+   padding: 0;
 }
 
+.resume-header img{
+    border-radius: 50%;
+    display: none;
+}
 
 h1 {
   font-size: clamp(1.8rem, 4vw, 2.5rem);
@@ -64,6 +68,7 @@ h3{
 }
 
 div.resume-skills-ref{
+  display: block;
   width: 100%;
   height: auto;
 }
@@ -71,6 +76,7 @@ div.resume-skills-ref{
 div.resume-skills, div.resume-reference{
   width: 100%;
   list-style-position: inside;
+  margin-bottom: 2rem;
 }
 
 
@@ -114,15 +120,26 @@ div.resume-experience{
     width: 70%;
     }
 
+    .resume-container{
+      margin: 1rem auto;
+    }
+
     .resume-body{
     display: flex;
     }
 
+
     div.resume-skills-ref{
+    display: block;
     width: 40%;
     height: auto; 
-    margin-right: 1rem; 
+    margin-right: 0.3rem; 
     }
+
+    .resume-header img{
+    border-radius: 50%;
+    display: block;
+  }
 
   }
 
