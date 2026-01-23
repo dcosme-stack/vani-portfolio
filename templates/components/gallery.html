@@ -15,6 +15,7 @@
                         <div class="video-container" >
                                 <iframe 
                                 src="https://www.youtube.com/embed/{{ item.youtube_id }}"
+                                title="Video: {{ item.title }}"
                                 referrerpolicy="strict-origin-when-cross-origin"
                                 allow="fullscreen">
                                 </iframe>
@@ -23,6 +24,6 @@
                 </div>
                 {% endif %}
         {% empty %}
-        <p>No item to display.</p>
+        <div class="empty-gallery">No item to display.</div>
         {% endfor %}
 </div>

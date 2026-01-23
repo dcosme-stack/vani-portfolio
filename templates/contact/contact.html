@@ -9,7 +9,7 @@
 
 
 <section class="contact" id="contact-section">
-    <h1>CONTACT ME</h1>
+    <h1>CONTACT VANI</h1>
 
     {% if messages %}
         {% for message in messages %}
@@ -32,12 +32,6 @@
         <button type="submit">Send message</button>
     </form>
 </section>
-
-<p class="social-media-icon">
-    <a href="{{ site.facebook_url }}" target="_blank"><img src="{% static 'images/socialmedia/facebook.svg' %}" alt="Facebook icon"></a>
-    <a href="{{ site.youtube_url }}" target="_blank"><img src="{% static 'images/socialmedia/youtube.svg' %}" alt="Youtube icon"></a>
-    <a href="{{ site.instagram_url }}" target="_blank"><img src="{% static 'images/socialmedia/instagram.svg' %}" alt="Instagram icon"></a>
-</p>
 
 <p class="call-to-action">
     <a href="{% url 'pages:homepage' %}">BACK TO HOME &xrarr;</a>

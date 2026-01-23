@@ -19,7 +19,7 @@
 <div class="resume-header">
     <div>
         <h2>{{ resume.full_name }}</h1>
-            <p>{{ resume.main_info|safe }}</p>
+            {{ resume.main_info|safe }}
     </div>
     {% if resume.resume_pic %}
     <div>
@@ -30,7 +30,7 @@
 
 <div class="resume-profile">
     <h2>PROFILE</h2>
-    <p>{{ resume.profile|safe }}</p>
+    {{ resume.profile|safe }}
 </div>
 
 <div class="resume-body">
@@ -68,7 +68,7 @@
         <h2>EXPERIENCE</h2>
         {% for exp in resume.experiences.all %}
         <h3>{{ exp.title }}</h3>
-        <p>{{ exp.description|safe }}</p>
+        {{ exp.description|safe }}
         {% endfor %}
     </div>
 </div>

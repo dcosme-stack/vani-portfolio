@@ -1,13 +1,16 @@
 from django.contrib import admin
 from django.utils.html import format_html
-from .models import Photo, Video
+from .models import Photo, Video, Category
 
-# Register your models here.
+@admin.register(Category)
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ("name", "content_type", "slug")
+    list_filter = ("content_type",)
 
 @admin.register(Photo)
 class PhotoAdmin(admin.ModelAdmin):
     list_display = ("title", "thumbnail", "category", "is_featured", "created_at")
-    list_filter = ("is_featured","category",)
+    list_filter = ("is_featured","category","created_at",)
     search_fields = ("title",)
     readonly_fields = ("thumbnail_preview",)
 
@@ -28,12 +31,17 @@ class PhotoAdmin(admin.ModelAdmin):
                 obj.image.url
             )
         return "-"
+    
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if db_field.name == "category":
+            kwargs["queryset"] = Category.objects.filter(content_type="photo")
+        return super().formfield_for_foreignkey(db_field, request, **kwargs)
 
 
 @admin.register(Video)
 class VideoAdmin(admin.ModelAdmin):
     list_display = ("title", "category", "thumbnail_preview", "is_featured", "created_at")
-    list_filter = ("is_featured","category",)
+    list_filter = ("is_featured", "category", "created_at",)
     search_fields = ("title",)
     readonly_fields = ("thumbnail_preview",)
 
@@ -56,3 +64,8 @@ class VideoAdmin(admin.ModelAdmin):
         )
 
     thumbnail_preview.short_description = "Preview"
+
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if db_field.name == "category":
+            kwargs["queryset"] = Category.objects.filter(content_type="video")
+        return super().formfield_for_foreignkey(db_field, request, **kwargs)

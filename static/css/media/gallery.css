@@ -4,46 +4,9 @@
 
 .standard-container{
     width: 90%;
-    margin: 3rem auto 2rem auto;
-    display: flex;
-    flex-direction:column;
+    margin: 3rem auto 0 auto;
 }
 
-/* Category Filters*/
-
-div.categories{
-    display: flex;
-    gap: 0.5rem;
-}
-
-div.categories a{
-    display:inline-block;
-    padding:0.3rem 0.6rem;
-    vertical-align:middle;
-    overflow:hidden;
-    text-decoration:none;
-    text-align: center;
-    color:black;
-    background-color: lightgrey;
-}
-
-div.categories a.active{
-    background-color: maroon;
-    color: white;
-    font-weight: 700;
-}
-
-div.categories a:hover{
-    color: maroon;
-    font-weight: 600;
-}
-
-div.categories a.active:hover{
-    background-color: maroon;
-    color: white;
-    font-weight: 700;
-    cursor:default;
-}
 
 /*Main Title*/
 
@@ -123,28 +86,29 @@ div.gallery-container > div > div.video-description, div.gallery-container > div
     border: 0;
 }
 
+.empty-gallery{
+    display: grid;
+    grid-column: 1 / -1;
+    text-align: center;
+    font-style: italic;
+}
+
 
 /* ==========================
    Tablet & Up
    ========================== */
 
-@media (min-width: 1024px) {
-    .standard-container{
-        width: 90%;
-        display: flex;
-        flex-direction:row;
-        align-items: center;
-        justify-content: space-between;
-        margin: 2rem auto;
+@media (min-width: 768px) {
+    .gallery-container{
+        grid-template-columns: 1fr 1fr;
     }
+}
+
+
+@media (min-width: 1024px) {
     .gallery-container{
         grid-template-columns: 1fr 1fr 1fr;
     }
-
-        div.categories a{
-        padding:0.3rem 1rem;
-    }
-
 }
 
 

@@ -7,23 +7,29 @@
 
 {% block content %}
 
-<div class="standard-container">
-        <h1 class="h1-standard">MY PHOTOS</h1>
+<section class="standard-container" aria-labelledby="photos-title">
+        <h1 class="h1-standard" id="photos-title">MY PHOTOS</h1>
+</section>
 
-        <div class="categories">
-                <a href="{% url 'media:photo_list' %}"
-                class="{% if not current_category %}active{% endif %}">
-                All
-                </a>
+<nav class="categories" aria-label="Photo categories">
+    <a
+        href="{% url 'media:photo_list' %}"
+        class="{% if not current_category %}active{% endif %}"
+        {% if not current_category %}aria-current="page"{% endif %}
+    >
+        All
+    </a>
 
-                {% for value, label in categories %}
-                <a href="{% url 'media:photo_list_by_category' value %}"
-                class="{% if current_category == value %}active{% endif %}">
-                {{ label }}
-                </a>
-                {% endfor %}
-        </div>
-</div>
+    {% for category in categories %}
+    <a
+        href="{% url 'media:photo_list_by_category' category.slug %}"
+        class="{% if current_category and current_category.id == category.id %}active{% endif %}"
+        {% if current_category and current_category.id == category.id %}aria-current="page"{% endif %}
+    >
+        {{ category.name }}
+    </a>
+    {% endfor %}
+</nav>
 
 {% include "components/gallery.html" with items=photos %}
 

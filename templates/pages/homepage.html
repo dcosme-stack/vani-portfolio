@@ -1,28 +1,48 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block structured_data %}
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "{{ site.actress_name }}",
+        "url": "{{ site.site_url }}",
+        "image": "{{ site.seo_image.url }}",
+        "jobTitle": "Actress",
+        "nationality": "Indian",
+        "gender": "Female",
+        "description": "Indian film actress known for her work in theatre, television and web series.",
+        "sameAs": [
+            "https://www.facebook.com/artistin.vanishreekulkarni",
+            "https://www.instagram.com/artistin_vanishreekulkarni",
+            "https://youtube.com/@reelvani"
+        ]
+    }
+</script>
+{% endblock %}
+
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'css/pages/homepage.css' %}">
 {% endblock %}
 
 {% block content %}
-<section class="hero">
+<section class="hero" aria-labelledby="hero-title">
     {% if homepage.hero_image %}
         <img
             src="{{ homepage.hero_image.url }}"
-            alt="Hero Image - Vanishree Kulkarni"
+            alt="Hero Image - Portrait of Vanishree Kulkarni"
             title="Vanishree Kulkarni"
-            alt="Portrait of actress Vanishree Kulkarni"
             loading="eager"
             fetchpriority="high"
             class="hero_image"
         />
 
-        <div class="hero_overlay"></div>
+        <div class="hero_overlay" aria-hidden="true"></div>
 
         <div class="hero_content">
-            <h1>{{ homepage.main_title }}</h1>
-            <p>{{ homepage.description|safe }}</p>
+            <h1 id="hero-title">{{ homepage.main_title }}</h1>
+            {{ homepage.description|safe }}
             <a href="{% url 'pages:about' %}" class="call-to-action">FIND OUT MORE &xrarr;</a>
         </div>
     {% endif %}

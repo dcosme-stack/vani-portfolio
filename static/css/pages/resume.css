@@ -34,6 +34,13 @@ div > p{
   background-color: #fbf8f8;
 }
 
+.resume-header *,
+.resume-profile *,
+.resume-experience p *{
+  background-color: inherit !important;
+  color: inherit !important;
+}
+
 .resume-container{
   display: flex;
   align-items: center;

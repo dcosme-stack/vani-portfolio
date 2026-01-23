@@ -2,6 +2,9 @@
 
     /* --- Section Container --- */
     .contact {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
         margin: 3rem 1rem 1rem 1rem;
         padding: 0.5rem 1rem;
         background-color: #ffffff;
@@ -89,9 +92,15 @@
     /* ==========================
             Tablet & Up
    ========================== */
-    @media (min-width: 1024px) {
+    @media (min-width: 768px) {
         .contact {
             max-width: 500px;
             margin: 2rem auto;
+        }
+    }
+
+    @media (min-width: 1540px) {
+        .contact {
+            margin: 4rem auto 2rem auto;
         }
     }

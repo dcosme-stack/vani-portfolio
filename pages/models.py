@@ -18,7 +18,7 @@ class Homepage(FileCleanupModel):
     def __str__(self):
         return self.main_title
     
-class About_Vani(models.Model):
+class About_Vani(FileCleanupModel):
     class Meta:
         verbose_name = "About"
         verbose_name_plural = "About"
