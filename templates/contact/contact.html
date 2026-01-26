@@ -2,43 +2,128 @@
 {% load static %}
 
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'css/contact/contact.css' %}">
+<link rel="stylesheet" href="{% static 'css/contact/contact.css' %}">
 {% endblock %}
 
 {% block content %}
 
+<section
+    class="contact"
+    id="contact-section"
+    aria-labelledby="contact-title"
+>
+    <h1 id="contact-title">Contact Me</h1>
 
-<section class="contact" id="contact-section">
-    <h1>CONTACT VANI</h1>
-
+    {# Success messages (screen-reader announced) #}
     {% if messages %}
-        {% for message in messages %}
-            <p class="success">{{ message }}</p>
-        {% endfor %}
+        <div role="status" aria-live="polite">
+            {% for message in messages %}
+                <p class="{{ message.tags }}">{{ message }}</p>
+            {% endfor %}
+        </div>
     {% endif %}
 
-    <form method="post" id="contact-form">
+    <form
+        method="post"
+        id="contact-form"
+        aria-labelledby="contact-title"
+        novalidate
+    >
         {% csrf_token %}
 
         {{ form.non_field_errors }}
 
-        <div>{{ form.firstname }}</div>
-        <div>{{ form.lastname }}</div>
-        <div>{{ form.email }}</div>
-        <div>{{ form.phone }}</div>
-        <div>{{ form.subject }}</div>
-        <div>{{ form.message }}</div>
+        {{ form.honeypot }}
 
-        <button type="submit">Send message</button>
+        <div class="form-field">
+            <label for="{{ form.firstname.id_for_label }}">
+                First name<span class="mandatory-field">*</span>
+            </label>
+            {{ form.firstname }}
+            {% if form.firstname.errors %}
+                <p id="error-firstname" class="field-error">
+                    {{ form.firstname.errors|striptags }}
+                </p>
+            {% endif %}
+        </div>
+
+        <div class="form-field">
+            <label for="{{ form.lastname.id_for_label }}">
+                Last name<span class="mandatory-field">*</span>
+            </label>
+            {{ form.lastname }}
+            {% if form.lastname.errors %}
+                <p id="error-lastname" class="field-error">
+                    {{ form.lastname.errors|striptags }}
+                </p>
+            {% endif %}
+        </div>
+
+        <div class="form-field">
+            <label for="{{ form.email.id_for_label }}">
+                Email<span class="mandatory-field">*</span>
+            </label>
+            {{ form.email }}
+            {% if form.email.errors %}
+                <p id="error-email" class="field-error">
+                    {{ form.email.errors|striptags }}
+                </p>
+            {% endif %}
+        </div>
+
+        <div class="form-field">
+            <label for="{{ form.phone.id_for_label }}">
+                Phone
+            </label>
+            {{ form.phone }}
+            {% if form.phone.errors %}
+                <p id="error-phone" class="field-error">
+                    {{ form.phone.errors|striptags }}
+                </p>
+            {% endif %}
+        </div>
+
+        <div class="form-field">
+            <label for="{{ form.subject.id_for_label }}">
+                Subject
+            </label>
+            {{ form.subject }}
+            {% if form.subject.errors %}
+                <p id="error-subject" class="field-error">
+                    {{ form.subject.errors|striptags }}
+                </p>
+            {% endif %}
+        </div>
+
+        <div class="form-field">
+            <label for="{{ form.message.id_for_label }}">
+                Message<span class="mandatory-field">*</span>
+            </label>
+            {{ form.message }}
+            <small>
+                <span id="char-count"></span>
+            </small>
+            {% if form.message.errors %}
+                <p id="error-message" class="field-error">
+                    {{ form.message.errors|striptags }}
+                </p>
+            {% endif %}
+        </div>
+
+        <button type="submit">
+            Send message
+        </button>
     </form>
 </section>
 
 <p class="call-to-action">
-    <a href="{% url 'pages:homepage' %}">BACK TO HOME &xrarr;</a>
+    <a href="{% url 'pages:homepage' %}">
+        Back to home →
+    </a>
 </p>
 
 {% endblock %}
 
 {% block extra_js %}
-  <script src="{% static 'js/contact.js' %}"></script>
-  {% endblock %}
+<script src="{% static 'js/contact.js' %}"></script>
+{% endblock %}

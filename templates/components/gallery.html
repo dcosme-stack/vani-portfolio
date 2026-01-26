@@ -1,29 +1,35 @@
-<div class="gallery-container">
+<ul class="gallery-container">
         {% for item in items %}
                 {% if item.image %}
-                <div>
-                        <div>
-                                <img src="{{ item.image.url }}"
+                <li role="listitem" class="gallery-item">
+                        <img
+                                src="{{ item.image.url }}"
                                 alt="{{ item.title }}"
-                                title="{{ item.title }}">
-                        </div>
-                        <div class="photo-description">{{ item.description }}</div>
-                </div>
+                                title="{{ item.title }}"
+                        >
+                        <p class="photo-description">{{ item.description }}</p>
+                </li>
                 {% endif %}
                 {% if item.youtube_id %}
-                <div>
+                <li role="listitem" class="gallery-item">
                         <div class="video-container" >
                                 <iframe 
-                                src="https://www.youtube.com/embed/{{ item.youtube_id }}"
-                                title="Video: {{ item.title }}"
-                                referrerpolicy="strict-origin-when-cross-origin"
-                                allow="fullscreen">
+                                        src="https://www.youtube.com/embed/{{ item.youtube_id }}"
+                                        title="Video: {{ item.title }}"
+                                        referrerpolicy="strict-origin-when-cross-origin"
+                                        allow="fullscreen">
                                 </iframe>
                         </div>
-                        <div class="video-description">{{ item.description }}</div>
-                </div>
+                        <p class="video-description">{{ item.description }}</p>
+                </li>
                 {% endif %}
         {% empty %}
-        <div class="empty-gallery">No item to display.</div>
+        <li
+                class="empty-gallery"
+                role="status"
+                aria-live="polite"
+        >
+                No item to display.
+        </li>
         {% endfor %}
-</div>
+</ul>

@@ -26,64 +26,17 @@ h1 {
     column-gap: 10px;
 }
 
-h2.gallery-category{
-    width: 90%;
-    margin: 10px auto;
-    color: black;
-    font-style: italic;
-}
-
-.gallery-container h3{
-    color: black;
-    text-align: center;
-    margin-bottom: 5px;
-}
-
-div.gallery-container > div{
+.gallery-item{
+    list-style-type: none;
     justify-self: center;
-    margin-bottom: 20px;
-}
-
-div.gallery-container > div > iframe{
-    max-width: 100%;
-    width: 100%;
-    height: 300;
-    margin:0px;
-    border-radius: 10px;
-}
-
-div.gallery-container > div > div > img{
-    max-width: 100%;
-    width: 100%;
-    height: 250px;
-    border-radius: 5px;
-}
-
-div.gallery-container > div > div > img:hover{
-    opacity: 60%;
-}
-
-div.gallery-container > div{
+    text-align: center;
     width: 100%;
 }
 
-div.gallery-container > div > div.video-description, div.gallery-container > div > div.photo-description{
-    padding: 5px;
+.gallery-item p.photo-description,
+.gallery-item p.video-description{ 
     font-style: italic;
     text-align: center;
-}
-
-/*Video iFrames*/
- .video-container{
-    aspect-ratio: 16 / 9;
-    width: 100%;
-        
-    }
-
-.video-container iframe{
-    width: 100%;
-    height: 100%;
-    border: 0;
 }
 
 .empty-gallery{
@@ -93,11 +46,41 @@ div.gallery-container > div > div.video-description, div.gallery-container > div
     font-style: italic;
 }
 
+/*Images*/
+
+.gallery-item img{
+    max-width: 100%;
+    width: 100%;
+    height: 250px;
+    border-radius: 5px;
+}
+
+.gallery-item img:hover{
+    opacity: 60%;
+}
+
+/*Modal*/
+
+/*Video iFrames*/
+ 
+.video-container{
+    aspect-ratio: 16 / 9;
+    width: 100%;    
+    }
+
+.video-container iframe{
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+
 
 /* ==========================
    Tablet & Up
    ========================== */
 
+/* Tablet */
 @media (min-width: 768px) {
     .gallery-container{
         grid-template-columns: 1fr 1fr;
@@ -105,13 +88,14 @@ div.gallery-container > div > div.video-description, div.gallery-container > div
 }
 
 
+/* Laptop */
 @media (min-width: 1024px) {
     .gallery-container{
         grid-template-columns: 1fr 1fr 1fr;
     }
 }
 
-
+/* Desktop */
 @media (min-width: 1540px) {
     .gallery-container{
         grid-template-columns: 1fr 1fr 1fr 1fr;

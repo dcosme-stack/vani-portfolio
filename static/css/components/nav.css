@@ -83,7 +83,7 @@ button.hamburger {
   z-index: 999;
   padding-top: 4rem;
   margin: 0;
-  transform: translateY(-200%);
+  transform: translateY(-250%);
   transition: transform 0.5s ease-in-out;
 }
 

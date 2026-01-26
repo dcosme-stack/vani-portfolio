@@ -10,7 +10,7 @@
 <div class="resume-container">
     <h1 class="h1-standard">{{ resume.main_title }}</h1>
         {% if resume.resume_file %}
-        <div><a href="{{ resume.resume_file.url }}" download target="_blank">
+        <div><a href="{{ resume.resume_file.url }}"  target="_blank">
             <img src="{% static 'images/docs/pdf.svg' %}" alt="Download Resume" title="Download my resume" width="60px" height="60px">
         </a></div>
         {% endif %}

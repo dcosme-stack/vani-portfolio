@@ -48,7 +48,8 @@ INSTALLED_APPS = [
     'pages',
     'media_app',
     'contact',
-    "django_ckeditor_5",
+    'django_ckeditor_5',
+    'django_ratelimit',
 ]
 
 MIDDLEWARE = [

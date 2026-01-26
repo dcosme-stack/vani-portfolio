@@ -92,6 +92,11 @@ main > div {
   z-index: 5;
 }
 
+.about-article-6 {
+  background: lightgray;
+  z-index: 6;
+}
+
 .article-title-section{
   display: flex;
   flex-direction: row;

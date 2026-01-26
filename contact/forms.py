@@ -3,14 +3,55 @@ from .models import ContactMessage
 
 class ContactForm(forms.ModelForm):
     class Meta:
+        honeypot = forms.CharField(
+            required=False,
+            widget=forms.HiddenInput
+        )
         model = ContactMessage
         fields = ["firstname", "lastname", "email", "phone", "subject", "message"]
 
         widgets = {
-            "firstname": forms.TextInput(attrs={"placeholder": "Your firstname"}),
-            "lastname": forms.TextInput(attrs={"placeholder": "Your lastname"}),
-            "email": forms.EmailInput(attrs={"placeholder": "Your email"}),
-            "phone": forms.TextInput(attrs={"placeholder": "Your phone (optional)"}),
-            "subject": forms.TextInput(attrs={"placeholder": "Subject (optional)"}),
-            "message": forms.Textarea(attrs={"placeholder": "Your message", "rows": 5}),
+            "firstname": forms.TextInput(
+                attrs={
+                    "aria-describedby": "error-firstname",
+                    "maxlength": 100,
+                }
+            ),
+            "lastname": forms.TextInput(
+                attrs={
+                    "aria-describedby": "error-lasttname",
+                    "maxlength": 100,
+                }
+            ),
+            "email": forms.EmailInput(
+                attrs={
+                    "aria-describedby": "error-firstname",
+                    "maxlength": 254,
+                }
+            ),
+            "phone": forms.TextInput(
+                attrs={
+                    "aria-describedby": "error-email",
+                    "maxlength": 20,
+                }
+            ),
+            "subject": forms.TextInput(
+                attrs={
+                    "aria-describedby": "error-subject",
+                    "maxlength": 150,
+                }
+            ),
+            "message": forms.Textarea(
+                attrs={
+                    "placeholder": "Your message",
+                    "rows": 5,
+                    "aria-describedby": "error-message",
+                    "maxlength": 2000,
+                }
+            ),
         }
+
+    def clean_honeypot(self):
+        if self.cleaned_data.get("honeypot"):
+            raise forms.ValidationError("Bot detected.")
+        return ""
