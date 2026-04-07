@@ -83,6 +83,10 @@
         transition: border-color 0.3s ease, box-shadow 0.3s ease;
     }
 
+    .contact textarea {
+        border: 1px solid #ccc;
+    }
+
     .contact input[type="text"]:focus,
     .contact input[type="email"]:focus,
     .contact textarea:focus {

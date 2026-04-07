@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'contact',
     'django_ckeditor_5',
     'django_ratelimit',
+    'django.contrib.sitemaps',
 ]
 
 MIDDLEWARE = [

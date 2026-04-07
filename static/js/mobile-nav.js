@@ -1,18 +1,43 @@
-  const hamburger = document.querySelector('.hamburger');
-  const menu = document.getElementById('mobile-menu');
-  const closeBtn = document.querySelector('.mobile-close');
+const hamburger = document.querySelector('.hamburger');
+const menu = document.getElementById('mobile-menu');
+const closeBtn = document.querySelector('.mobile-close');
+const desktopNav = document.getElementById('desktop-nav');
 
-  function openMenu() {
-    menu.classList.add('open');
-    document.body.classList.add('menu-open');
-    hamburger.setAttribute('aria-expanded', 'true');
+function openMenu() {
+  // Open mobile menu
+  menu.classList.add('open');
+  menu.removeAttribute('inert');
+  menu.setAttribute('aria-hidden', 'false');
+
+  // Disable desktop nav
+  if (desktopNav) {
+    desktopNav.setAttribute('inert', '');
+    desktopNav.setAttribute('aria-hidden', 'true');
   }
 
-  function closeMenu() {
-    menu.classList.remove('open');
-    document.body.classList.remove('menu-open');
-    hamburger.setAttribute('aria-expanded', 'false');
+  document.body.classList.add('menu-open');
+  hamburger.setAttribute('aria-expanded', 'true');
+
+  closeBtn.focus();
+}
+
+function closeMenu() {
+  // Close mobile menu
+  menu.classList.remove('open');
+  menu.setAttribute('aria-hidden', 'true');
+  menu.setAttribute('inert', '');
+
+  // Re-enable desktop nav
+  if (desktopNav) {
+    desktopNav.removeAttribute('inert');
+    desktopNav.setAttribute('aria-hidden', 'false');
   }
 
-  hamburger.addEventListener('click', openMenu);
-  closeBtn.addEventListener('click', closeMenu);
+  document.body.classList.remove('menu-open');
+  hamburger.setAttribute('aria-expanded', 'false');
+
+  hamburger.focus();
+}
+
+hamburger.addEventListener('click', openMenu);
+closeBtn.addEventListener('click', closeMenu);

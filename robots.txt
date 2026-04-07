@@ -1,0 +1,9 @@
+# Allow all search engines
+User-agent: *
+Disallow: /admin/
+Disallow: /media/
+Disallow: /static/
+Allow: /
+
+# Sitemap location
+Sitemap: https://www.vanishree.com/sitemap.xml

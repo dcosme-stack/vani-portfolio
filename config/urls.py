@@ -19,6 +19,8 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 import config.admin
+from django.contrib.sitemaps.views import sitemap
+from core.sitemaps import sitemaps
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,6 +28,7 @@ urlpatterns = [
     path("", include("pages.urls")),
     path("", include("contact.urls")),
     path("ckeditor5/", include('django_ckeditor_5.urls')),
+    path("sitemap.xml", sitemap, {"sitemaps": sitemaps}, name="sitemap"),
 ]
 
 if settings.DEBUG:
