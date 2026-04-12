@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "vani-portfolio"
+version = "0.1.0"
+description = "Portfolio website built with Django"
+authors = ["David Cosme <cosmedavid@hotmail.fr>"]
+package-mode = false
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.12"
+django = "^5.0"
+pillow = "^12.1.0"
+python-dotenv = "^1.2.1"
+django-jazzmin = "^3.0.1"
+django-ckeditor-5 = "^0.2.19"
+django-autoslug = "^1.9.9"
+django-ratelimit = "^4.1.0"
+django-redis = "^6.0.0"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"

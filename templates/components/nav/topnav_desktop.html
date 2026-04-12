@@ -1,0 +1,21 @@
+{% load navigation %}
+
+<nav
+  id="desktop-nav"
+  class="desktop-nav"
+  aria-label="Primary navigation"
+>
+  <ul class="left-top-nav">
+    <li class="{% if request|is_active:'pages:homepage' %}top-nav-active{% endif %}">
+      <a href="{% url 'pages:homepage' %}">VANISHREE KULKARNI</a>
+    </li>
+  </ul>
+
+  <ul class="right-top-nav">
+    {% for item in desktop_nav %}
+      <li class="{% if request|is_active:item.active_prefix %}top-nav-active{% endif %}">
+        <a href="{{ item.url }}">{{ item.label }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+</nav>

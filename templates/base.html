@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  {% include "components/meta_tags.html" %}
+
+  <link rel="stylesheet" href="{% static 'css/main.css' %}">
+  <link rel="stylesheet" href="{% static 'css/components/nav.css' %}">
+  <link rel="stylesheet" href="{% static 'css/components/footer.css' %}">
+  <link rel="stylesheet" href="{% static 'css/components/button.css' %}">
+  <link rel="stylesheet" href="{% static 'css/components/social_media_icons.css' %}">
+  <link rel="icon" type="image/x-icon" href="{% static 'images/favicon/favicon.ico' %}">
+  <script src="{% static 'js/mobile-nav.js' %}" defer></script>
+  <script src="{% static 'js/main.js' %}" defer></script>
+
+  {% block structured_data %}{% endblock %}
+  {% block extra_css %}{% endblock %}
+
+</head>
+
+<body>
+
+  <header class="top-nav">
+    {% include "components/nav/topnav_desktop.html" %}
+    {% include "components/nav/topnav_mobile.html" %}
+  </header>
+
+  <main class = "site-main">
+  {% block content %}{% endblock %}
+  </main>
+
+
+  <footer>
+  {% include "components/footer.html" %}
+  </footer>
+
+<!-- GLOBAL MODAL -->
+  <div id="modal-container" class="modal">
+    <span class="modal-close">&times;</span>
+    <img id="modal-img" class="modal-content" alt="">
+  </div>
+
+  {% block extra_js %}{% endblock %}
+
+
+</body>
+
+</html>

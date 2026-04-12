@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/media/gallery.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<section class="standard-container" aria-labelledby="videos-title">
+        <h1 id="videos-title" class="h1-standard">MY VIDEOS</h1>
+</section>
+
+<nav class="categories" aria-label="Video categories">
+    <a
+        href="{% url 'media:video_list' %}"
+        class="{% if not current_category %}active{% endif %}"
+        {% if not current_category %}aria-current="page"{% endif %}
+    >
+    All
+    </a>
+
+    {% for category in categories %}
+    <a
+        href="{% url 'media:video_list_by_category' category.slug %}"
+        class="{% if current_category and current_category.id == category.id %}active{% endif %}"
+        {% if current_category and current_category.id == category.id %}aria-current="page"{% endif %}
+    >
+        {{ category.name }}
+    </a>
+    {% endfor %}
+</nav>
+
+{% include "components/gallery.html" with items=videos %}
+
+<p class="call-to-action">
+    <a href="{% url 'contact:contact' %}">LET'S GET IN TOUCH &xrarr;</a>
+</p>
+
+{% endblock %}
