@@ -1,6 +1,12 @@
+import dj_database_url
+import os
 from .base import *
 
 DEBUG = False
+
+DATABASES = {
+    "default": dj_database_url.config(default=os.environ.get("DATABASE_URL"))
+}
 
 ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "").split(",")
 
@@ -9,9 +15,11 @@ SECURE_SSL_REDIRECT = True
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 
-STATIC_ROOT = BASE_DIR / "staticfiles"
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 STATICFILES_STORAGE = "django.contrib.staticfiles.storage.ManifestStaticFilesStorage"
+
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 
