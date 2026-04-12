@@ -1,24 +1,41 @@
+document.addEventListener("DOMContentLoaded", () => {
+    const modal = document.getElementById("modal-container");
+    const modalImg = document.getElementById("modal-img");
+    const closeBtn = document.querySelector(".modal-close");
+    const images = document.querySelectorAll(".gallery-img");
 
-function openModal(param) {
-    let img_details = param.src;
-    let alt_details = param.alt;
-    document.getElementById("modal-img").src = img_details;
-    document.getElementById("modal-img").alt = alt_details;
-    document.getElementById("modal-container").style.display = "block";
-}
-function closeModal() {
-    let checkObj = event.target.id;
-    if (checkObj === "modal-container") {
-        document.getElementById("modal-container").style.display = "none";
+    function openModal(img) {
+        modalImg.src = img.src;
+        modalImg.alt = img.alt;
+
+        modal.classList.add("show");
+        document.body.style.overflow = "hidden";
     }
-}
 
-function closeModalX() {
-    document.getElementById("modal-container").style.display = "none";
-}
-
-window.addEventListener("keydown",(event)=>{
-    if (event.key ==='Escape'){
-        document.getElementById("modal-container").style.display = "none";
+    function closeModal() {
+        modal.classList.remove("show");
+        document.body.style.overflow = "";
     }
+
+    // Open modal
+    images.forEach(img => {
+        img.addEventListener("click", () => openModal(img));
+    });
+
+    // Close with X
+    closeBtn.addEventListener("click", closeModal);
+
+    // Close on background click
+    modal.addEventListener("click", (e) => {
+        if (e.target === modal) {
+            closeModal();
+        }
+    });
+
+    // Close with ESC
+    window.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+            closeModal();
+        }
+    });
 });

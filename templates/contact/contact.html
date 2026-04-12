@@ -8,117 +8,168 @@
 {% block content %}
 
 <section
-    class="contact"
+    class="contact-container"
     id="contact-section"
     aria-labelledby="contact-title"
 >
-    <h1 id="contact-title">Contact Me</h1>
-
-    {# Success messages (screen-reader announced) #}
-    {% if messages %}
-        <div role="status" aria-live="polite">
-            {% for message in messages %}
-                <p class="{{ message.tags }}">{{ message }}</p>
-            {% endfor %}
-        </div>
-    {% endif %}
-
-    <form
-        method="post"
-        id="contact-form"
-        aria-labelledby="contact-title"
-        novalidate
-    >
-        {% csrf_token %}
-
-        {{ form.non_field_errors }}
-
-        {{ form.honeypot }}
-
-        <div class="form-field">
-            <label for="{{ form.firstname.id_for_label }}">
-                First name<span class="mandatory-field">*</span>
-            </label>
-            {{ form.firstname }}
-            {% if form.firstname.errors %}
-                <p id="error-firstname" class="field-error">
-                    {{ form.firstname.errors|striptags }}
-                </p>
-            {% endif %}
-        </div>
-
-        <div class="form-field">
-            <label for="{{ form.lastname.id_for_label }}">
-                Last name<span class="mandatory-field">*</span>
-            </label>
-            {{ form.lastname }}
-            {% if form.lastname.errors %}
-                <p id="error-lastname" class="field-error">
-                    {{ form.lastname.errors|striptags }}
-                </p>
-            {% endif %}
-        </div>
-
-        <div class="form-field">
-            <label for="{{ form.email.id_for_label }}">
-                Email<span class="mandatory-field">*</span>
-            </label>
-            {{ form.email }}
-            {% if form.email.errors %}
-                <p id="error-email" class="field-error">
-                    {{ form.email.errors|striptags }}
-                </p>
-            {% endif %}
-        </div>
-
-        <div class="form-field">
-            <label for="{{ form.phone.id_for_label }}">
-                Phone
-            </label>
-            {{ form.phone }}
-            {% if form.phone.errors %}
-                <p id="error-phone" class="field-error">
-                    {{ form.phone.errors|striptags }}
-                </p>
-            {% endif %}
-        </div>
-
-        <div class="form-field">
-            <label for="{{ form.subject.id_for_label }}">
-                Subject
-            </label>
-            {{ form.subject }}
-            {% if form.subject.errors %}
-                <p id="error-subject" class="field-error">
-                    {{ form.subject.errors|striptags }}
-                </p>
-            {% endif %}
-        </div>
-
-        <div class="form-field">
-            <label for="{{ form.message.id_for_label }}">
-                Message<span class="mandatory-field">*</span>
-            </label>
-            {{ form.message }}
-            <small>
-                <span id="char-count"></span>
-            </small>
-            {% if form.message.errors %}
-                <p id="error-message" class="field-error">
-                    {{ form.message.errors|striptags }}
-                </p>
-            {% endif %}
-        </div>
-
-        <button type="submit">
-            Send message
-        </button>
-    </form>
+    <h1 id="contact-title">CONTACT ME</h1>
+    <p class="contact-title">I am looking forward to collaborating with you.</p>
+    
 </section>
+
+{# Success messages (screen-reader announced) #}
+        {% if messages %}
+            <div role="status" aria-live="polite">
+                {% for message in messages %}
+                    <p class="{{ message.tags }}">{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+<div class="contact-global">
+
+    <section class="contact-social-area">
+        <div class="contact-social-area-title">
+            <h3>Get in touch</h3>
+            <p>Working within Bangalore Greater Area, you can contact me via phone / email or follow me through my social media.</p>
+        </div>
+        <div class="contact-social-details">
+            <div class="contact-details">
+                <div class="contact-details-item">
+                    <div class="social-media-icon">
+                        <img src="{% static 'images/socialmedia/location.svg' %}" alt="Email icon">
+                    </div>
+                    <div class="contact-details-item-content">
+                        <h4>Location</h4>
+                        <p>Bangalore</p>
+                    </div>
+                </div>
+                <div class="contact-details-item">
+                    <div class="social-media-icon">
+                        <a href="mailto:{{site.email}}" target="_blank">
+                            <img src="{% static 'images/socialmedia/email.svg' %}" alt="Email icon">
+                        </a>
+                    </div>
+                    <div>
+                        <h4>
+                            <a href="mailto:{{site.email}}" target="_blank">Email Me</a>
+                        </h4>
+                        <p>
+                            <a href="mailto:{{site.email}}" target="_blank">{{site.email}}</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="contact-details-item">
+                    <div class="social-media-icon">
+                        <a href="tel:{{site.phone}}">
+                            <img src="{% static 'images/socialmedia/phone.svg' %}" alt="phone icon">
+                        </a>
+                    </div>
+                    <div>
+                        <h4>
+                            <a href="tel:{{site.phone}}">Call Me</a>
+                        </h4>
+                        <p>
+                            <a href="tel:{{site.phone}}">{{site.phone}}</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="social-details">
+                <h4>Follow my social media</h4>
+                <p class="social-media-icon">
+                    <a href="{{site.facebook_url}}" target="_blank">
+                        <img src="{% static 'images/socialmedia/facebook.svg' %}" alt="Facebook icon">
+                    </a>
+                    <a href="{{site.youtube_url}}" target="_blank">
+                        <img src="{% static 'images/socialmedia/youtube.svg' %}" alt="Youtube icon">
+                    </a>
+                    <a href="{{site.instagram_url}}" target="_blank">
+                        <img src="{% static 'images/socialmedia/instagram.svg' %}" alt="Instagram icon">
+                    </a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact_form">
+
+        <h3>Send me a message</h3>
+
+        <form
+            method="post"
+            id="contact-form"
+            aria-labelledby="contact-title"
+            novalidate
+        >
+            {% csrf_token %}
+
+            {{ form.non_field_errors }}
+
+            {{ form.honeypot }}
+
+            <div class="form-field">
+                <label for="{{ form.firstname.id_for_label }}">
+                    First name<span class="mandatory-field">*</span>
+                </label>
+                {{ form.firstname }}
+                {% if form.firstname.errors %}
+                    <p id="error-firstname" class="field-error">
+                        {{ form.firstname.errors|striptags }}
+                    </p>
+                {% endif %}
+            </div>
+
+            <div class="form-field">
+                <label for="{{ form.lastname.id_for_label }}">
+                    Last name<span class="mandatory-field">*</span>
+                </label>
+                {{ form.lastname }}
+                {% if form.lastname.errors %}
+                    <p id="error-lastname" class="field-error">
+                        {{ form.lastname.errors|striptags }}
+                    </p>
+                {% endif %}
+            </div>
+
+            <div class="form-field">
+                <label for="{{ form.email.id_for_label }}">
+                    Email<span class="mandatory-field">*</span>
+                </label>
+                {{ form.email }}
+                {% if form.email.errors %}
+                    <p id="error-email" class="field-error">
+                        {{ form.email.errors|striptags }}
+                    </p>
+                {% endif %}
+            </div>
+
+            <div class="form-field">
+                <label for="{{ form.message.id_for_label }}">
+                    Message<span class="mandatory-field">*</span>
+                </label>
+                {{ form.message }}
+                <small>
+                    <span id="char-count"></span>
+                </small>
+                {% if form.message.errors %}
+                    <p id="error-message" class="field-error">
+                        {{ form.message.errors|striptags }}
+                    </p>
+                {% endif %}
+            </div>
+
+            <button type="submit">
+                Send
+            </button>
+        </form>
+    </section>
+
+</div>
 
 <p class="call-to-action">
     <a href="{% url 'pages:homepage' %}">
-        Back to home →
+        Homepage →
     </a>
 </p>
 

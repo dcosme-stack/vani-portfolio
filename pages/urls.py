@@ -5,7 +5,8 @@ app_name = "pages"
 
 urlpatterns = [
     path("", views.home_view, name="homepage"),
-    path("about/", views.about_view, name="about"),
-    path("resume/", views.resume_view, name="resume"),
+    path("showreel/", views.showreel_view, name="showreel"),
+    path("credits/", views.credits_view, name="credits"),
+    path("credits/<slug:category_slug>/", views.credits_view, name="credits_list_by_category"),
 
 ]

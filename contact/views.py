@@ -27,7 +27,7 @@ def contact_view(request):
             cleaned = form.cleaned_data
 
             send_mail(
-                subject=f"[Vani Portfolio][Contact Message]: {cleaned['subject']}",
+                subject=f"[Vani Portfolio]: Message from {cleaned['firstname']} {cleaned['lastname']}",
                 message=cleaned['message'],
                 from_email=settings.DEFAULT_FROM_EMAIL,
                 recipient_list=[settings.CONTACT_RECIPIENT_EMAIL],
@@ -35,7 +35,7 @@ def contact_view(request):
 
             messages.success(
                 request,
-                "Thank you for your message. I’ll get back to you soon."
+                "Thank you for your message. I will get back to you soon."
             )
             return redirect("contact:contact")
 

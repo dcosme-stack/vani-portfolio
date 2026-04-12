@@ -30,11 +30,19 @@
   {% block content %}{% endblock %}
   </main>
 
+
   <footer>
   {% include "components/footer.html" %}
   </footer>
 
+<!-- GLOBAL MODAL -->
+  <div id="modal-container" class="modal">
+    <span class="modal-close">&times;</span>
+    <img id="modal-img" class="modal-content" alt="">
+  </div>
+
   {% block extra_js %}{% endblock %}
+
 
 </body>
 

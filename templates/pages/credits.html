@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/pages/credits.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="credit-container">
+    <h1 class="h1-standard">CREDITS</h1>  
+</div>
+
+<nav class="categories" aria-label="Credits categories">
+    <a
+        href="{% url 'pages:credits' %}"
+        class="{% if not current_category %}active{% endif %}"
+        {% if not current_category %}aria-current="page"{% endif %}
+    >
+    All
+    </a>
+
+    {% for category in categories %}
+    <a
+        href="{% url 'pages:credits_list_by_category' category.slug %}"
+        class="{% if current_category and current_category.id == category.id %}active{% endif %}"
+        {% if current_category and current_category.id == category.id %}aria-current="page"{% endif %}
+    >
+        {{ category.name }}
+    </a>
+    {% endfor %}
+</nav>
+
+<section class="credit-section">
+{% regroup credits by category as grouped_credits %}
+
+{% for group in grouped_credits %}
+    <h3 class="grid-category">{{ group.grouper }}</h3>
+
+    <div class="credit-grid">
+        {% for credit in group.list %}
+            <div class="credit-card">
+                <div class="credit-date">{{ credit.date }}</div>
+                <h4>{{ credit.title }}</h4>
+                <p>Role: {{ credit.role }}</p>
+
+                {% if credit.director %}
+                    <p class="director">Director: {{ credit.director }}</p>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+{% endfor %}
+</section>
+
+<p class="call-to-action">
+    <a href="{% url 'contact:contact' %}">Get in touch &xrarr;</a>
+</p>
+
+{% if credits.resume_file %}
+    <div>
+        <a href="{{ credits.resume_file.url }}"  target="_blank">
+            <img 
+                src="{% static 'images/docs/pdf.svg' %}"
+                alt="Download Resume"
+                title="Download my resume"
+                width="60px"
+                height="60px"
+            >
+        </a>
+    </div>
+{% endif %}
+
+{% endblock %}

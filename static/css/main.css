@@ -50,6 +50,44 @@ main {
   flex-direction: column;
 }
 
+/* ---- MODAL ---- */
+
+/* ==========================
+   GLOBAL MODAL (BASE)
+   ========================== */
+
+.modal {
+    display: none; /* ALWAYS hidden by default */
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.modal.show {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    max-width: 95%;
+    max-height: 95%;
+    object-fit: contain;
+    border-radius: 6px;
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+}
+
 
 /* ==========================
    Accessibility & Motion

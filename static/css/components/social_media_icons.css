@@ -4,9 +4,8 @@
 
   .social-media-icon {
   display: flex;
-  justify-content: center;
   gap: 1rem;
-  text-align: center;
+  
 }
 
 .social-media-icon img {

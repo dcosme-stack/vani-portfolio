@@ -16,6 +16,10 @@ h1 {
   color: maroon;
 }
 
+.categories{
+    margin: 0 0 1rem 0;
+}
+
 /*Gallery container*/
 
 .gallery-container{
@@ -59,9 +63,9 @@ h1 {
 
 .gallery-item img:hover{
     opacity: 60%;
+    cursor: pointer;
 }
 
-/*Modal*/
 
 /*Video iFrames*/
  
@@ -75,7 +79,6 @@ h1 {
     height: 100%;
     border: 0;
 }
-
 
 
 /* ==========================

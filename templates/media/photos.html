@@ -34,11 +34,11 @@
 {% include "components/gallery.html" with items=photos %}
 
 <p class="call-to-action">
-    <a href="{% url 'media:video_list' %}">MY VIDEOS &xrarr;</a>
+    <a href="{% url 'pages:credits' %}">My Credits &xrarr;</a>
 </p>
 
-{% endblock %}
 
+{% endblock %}
 
   {% block extra_js %}
   <script src="{% static 'js/photos_modal.js' %}"></script>

@@ -57,6 +57,7 @@ class SiteSettings(FileCleanupModel):
     youtube_url = models.URLField(blank=True)
     instagram_url = models.URLField(blank=True)
     email = models.EmailField()
+    phone = models.CharField(max_length=20, blank=True)
     footer = models.CharField(max_length=100)
     site_url = models.URLField(blank=True)
     seo_image = models.ImageField(

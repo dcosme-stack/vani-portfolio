@@ -2,23 +2,23 @@
 {% load static %}
 
 {% block structured_data %}
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "{{ site.actress_name }}",
-        "url": "{{ site.site_url }}",
-        "image": "{{ site.seo_image.url }}",
-        "jobTitle": "Actress",
-        "nationality": "Indian",
-        "gender": "Female",
-        "description": "Indian film actress known for her work in theatre, television and web series.",
-        "sameAs": [
-            "https://www.facebook.com/artistin.vanishreekulkarni",
-            "https://www.instagram.com/artistin_vanishreekulkarni",
-            "https://youtube.com/@reelvani"
-        ]
-    }
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "{{ site.actress_name }}",
+    "url": "{{ site.site_url }}",
+    "image": "{{ site.seo_image.url }}",
+    "jobTitle": "Actress",
+    "nationality": "Indian",
+    "gender": "Female",
+    "description": "Indian film actress known for her work in theatre, television and web series.",
+    "sameAs": [
+        "https://www.facebook.com/artistin.vanishreekulkarni",
+        "https://www.instagram.com/artistin_vanishreekulkarni",
+        "https://youtube.com/@reelvani"
+    ]
+}
 </script>
 {% endblock %}
 
@@ -28,23 +28,76 @@
 
 {% block content %}
 <section class="hero" aria-labelledby="hero-title">
-    {% if homepage.hero_image %}
-        <img
-            src="{{ homepage.hero_image.url }}"
+    {% if homepage.hero_image_mobile %}
+    <img
+            src="{{ homepage.hero_image_desktop.url }}"
+            srcset="
+            {{ homepage.hero_image_mobile.url }} 768w,
+            {{ homepage.hero_image_laptop.url }} 1280w,
+            {{ homepage.hero_image_desktop.url }} 1920w
+            "
+            sizes="100vw"
             alt="Hero Image - Portrait of Vanishree Kulkarni"
-            title="Vanishree Kulkarni"
+            title="Portrait of actress Vanishree Kulkarni"
             loading="eager"
             fetchpriority="high"
             class="hero_image"
-        />
+    />
 
         <div class="hero_overlay" aria-hidden="true"></div>
+     {% endif %}
 
         <div class="hero_content">
             <h1 id="hero-title">{{ homepage.main_title }}</h1>
-            {{ homepage.description|safe }}
-            <a href="{% url 'pages:about' %}" class="call-to-action">FIND OUT MORE &xrarr;</a>
-        </div>
-    {% endif %}
+            {{ homepage.short_description|safe }}
+            <a href="{% url 'pages:showreel' %}" class="call-to-action">ShowReel &xrarr;</a>
+        </div>   
 </section>
+
+<section class="detailed-description" aria-labelledby="about-vani">
+    <h2>{{ homepage.about_me_title }}</h2>    
+    {{ homepage.detailed_description|safe }}
+</section>
+
+<section class="mv-container" aria-labelledby="more-about-vani">      
+    <div class="stack-wrapper">
+        {% for article in homepage.articles.all %}
+        <section
+            class="panel about-article-{{ forloop.counter}}"
+            aria-labelledby="article-title-{{ forloop.counter }}"
+        >
+            <div class="stack">
+                <div class="article-title-section">
+                    <h3>{{ article.title }}</h3>
+                    <div class="article-counter" aria-hidden="true">{{ forloop.counter}}</div>
+                </div>
+                {% if article.image %}
+                <div class="article-image-and-desc">
+                    <div class="article-image-section">
+                        <img
+                        src="{{ article.image.url }}"
+                        alt="{{ article.title }}"
+                        title="{{ article.title }}"
+                        class="mv_article_img">
+                    </div>
+                    {% endif %}
+                    <div class="article-desc-section">
+                        {{ article.description|safe }}
+                    </div>
+                </div>
+            </div>
+        </section>
+        {% if forloop.last%}
+        <section class="panel about-article-end"
+        aria-labelledby="more-work-title">
+            <h3 id="more-work-title">FIND OUT MORE ABOUT MY WORK</h3>
+            <div class="call-to-action">
+                <a href="{% url 'pages:showreel' %}">ShowReel &xrarr;</a>
+            </div>
+        </section>
+            {% endif %}
+    {% endfor %}
+    </div>
+</section>
+
 {% endblock %}
