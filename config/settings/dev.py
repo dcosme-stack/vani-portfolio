@@ -2,7 +2,7 @@ from .base import *
 
 DEBUG = True
 
-ALLOWED_HOSTS = ["127.0.0.1", "localhost","unlocative-unremorsefully-fredericka.ngrok-free.dev", ".ngrok.io", ".ngrok-free.app",]
+ALLOWED_HOSTS = ["*"]
 
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
@@ -14,6 +14,16 @@ CSRF_TRUSTED_ORIGINS = [
 ]
 
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+
+# Database
+# https://docs.djangoproject.com/en/5.2/ref/settings/#databases
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
 
 CACHES = {
     "default": {
