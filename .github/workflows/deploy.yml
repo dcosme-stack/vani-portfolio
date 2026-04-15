@@ -27,22 +27,23 @@ jobs:
             git pull origin main
 
             echo "Building containers..."
-            docker-compose build
+            docker compose build
             
             echo "Starting services..."
-            docker-compose up -d
+            docker compose up -d
             
             echo "Waiting for app to be ready..."
 
             MAX_ATTEMPTS=30
             ATTEMPT=0
 
-            until docker-compose exec web python manage.py check > /dev/null 2>&1; do
+            until docker compose exec web python manage.py check > /dev/null 2>&1; do
               ATTEMPT=$((ATTEMPT+1))
 
               if [ $ATTEMPT -ge $MAX_ATTEMPTS ]; then
                 echo "App failed to start"
-                docker-compose logs web
+                docker compose logs web
+                docker compose logs web
                 exit 1
               fi
 
@@ -50,10 +51,10 @@ jobs:
             done
             
             echo "Running migrations..."
-            docker-compose exec web python manage.py migrate --noinput
+            docker compose exec web python manage.py migrate --noinput
 
             echo "Collect static (safety)..."
-            docker-compose exec web python manage.py collectstatic --noinput
+            docker compose exec web python manage.py collectstatic --noinput
 
             echo "Cleaning unused images..."
             docker system prune -f
