@@ -3,7 +3,7 @@ from .base import *
 
 DEBUG = os.getenv("DEBUG", "False") == "True"
 
-ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "*").split(",")
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "").split(",")
 
 DATABASES = {
     'default': {
@@ -33,6 +33,11 @@ USE_X_FORWARDED_HOST = True
 SECURE_SSL_REDIRECT = True
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://vanishreekulkarni.in",
+    "https://www.vanishreekulkarni.in",
+]
 
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
