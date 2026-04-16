@@ -37,7 +37,7 @@ jobs:
             MAX_ATTEMPTS=30
             ATTEMPT=0
 
-            until docker compose exec web python manage.py check > /dev/null 2>&1; do
+            until docker compose exec -T web python manage.py check > /dev/null 2>&1; do
               ATTEMPT=$((ATTEMPT+1))
 
               if [ $ATTEMPT -ge $MAX_ATTEMPTS ]; then
