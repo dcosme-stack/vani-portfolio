@@ -21,6 +21,7 @@
                 allow="fullscreen">
             </iframe>
         </div>
+	{% endif%}
         <div>
             {{ showreel.description|safe }}
         </div>
@@ -29,6 +30,6 @@
     <section class="call-to-action">
         <a href="{% url 'media:photo_list' %}" class="call-to-action">My Photos &xrarr;</a>
     </section>
-    {% endif%}
+    
 
 {% endblock %}
