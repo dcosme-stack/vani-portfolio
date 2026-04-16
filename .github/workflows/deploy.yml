@@ -37,18 +37,19 @@ jobs:
             MAX_ATTEMPTS=30
             ATTEMPT=0
 
-            until docker compose exec -T web python manage.py check > /dev/null 2>&1; do
+            until curl -f http://localhost:8000 > /dev/null 2>&1; do
               ATTEMPT=$((ATTEMPT+1))
 
               if [ $ATTEMPT -ge $MAX_ATTEMPTS ]; then
                 echo "App failed to start"
-                docker compose logs web
                 docker compose logs web
                 exit 1
               fi
 
               sleep 2
             done
+
+            echo "App is ready"
             
             echo "Running migrations..."
             docker compose exec web python manage.py migrate --noinput
