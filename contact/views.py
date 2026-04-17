@@ -26,12 +26,24 @@ def contact_view(request):
 
             cleaned = form.cleaned_data
 
-            send_mail(
-                subject=f"[Vani Portfolio]: Message from {cleaned['firstname']} {cleaned['lastname']}",
-                message=cleaned['message'],
-                from_email=settings.DEFAULT_FROM_EMAIL,
-                recipient_list=[settings.CONTACT_RECIPIENT_EMAIL],
-            )
+            try:
+                send_mail(
+                    subject=f"[Vani Portfolio]: Message from {cleaned['firstname']} {cleaned['lastname']}",
+                    message= f"""
+                    New message from your portfolio:
+
+                    Name: {cleaned['firstname']} {cleaned['lastname']}
+                    Email: {cleaned['email']}
+
+                    Message:
+                    {cleaned['message']}
+                    """,
+                    from_email=settings.DEFAULT_FROM_EMAIL,
+                    recipient_list=[settings.CONTACT_RECIPIENT_EMAIL],
+                    fail_silently=False,
+                )
+            except Exception as e:
+                print("Email failed:", e)
 
             messages.success(
                 request,

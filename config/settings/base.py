@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django_ckeditor_5',
     'django_ratelimit',
     'django.contrib.sitemaps',
+    'anymail',
 ]
 
 MIDDLEWARE = [
@@ -132,14 +133,6 @@ MEDIA_URL = "/media/"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Who receives contact form messages
-CONTACT_RECIPIENT_EMAIL = os.getenv("CONTACT_RECIPIENT_EMAIL")
-
-# System sender identity
-DEFAULT_FROM_EMAIL = os.getenv(
-    "DEFAULT_FROM_EMAIL",
-    "no-reply@vaniportfolio.com",
-)
 
 CKEDITOR_5_CONFIGS = {
     "simple_text": {
