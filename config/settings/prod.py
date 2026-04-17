@@ -56,5 +56,5 @@ ANYMAIL = {
     "BREVO_API_KEY": os.getenv("BREVO_API_KEY"),
 }
 
-DEFAULT_FROM_EMAIL = "noreply@yourdomain.com"
+DEFAULT_FROM_EMAIL = os.getenv("DEFAULT_FROM_EMAIL")
 CONTACT_RECIPIENT_EMAIL = os.getenv("CONTACT_RECIPIENT_EMAIL")
