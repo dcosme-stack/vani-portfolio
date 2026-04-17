@@ -4,6 +4,9 @@ from django.contrib import messages
 from .forms import ContactForm
 from django.conf import settings
 from django.core.mail import send_mail
+import logging
+
+logger = logging.getLogger(__name__)
 
 @ratelimit(key="ip", rate="5/m", method="POST", block=False)
 def contact_view(request):
@@ -27,7 +30,7 @@ def contact_view(request):
             cleaned = form.cleaned_data
 
             try:
-                send_mail(
+                result = send_mail(
                     subject=f"[Vani Portfolio]: Message from {cleaned['firstname']} {cleaned['lastname']}",
                     message= f"""
                     New message from your portfolio:
@@ -42,8 +45,9 @@ def contact_view(request):
                     recipient_list=[settings.CONTACT_RECIPIENT_EMAIL],
                     fail_silently=False,
                 )
+                logger.info(f"Email send_mail result: {result}")  # number of emails sent
             except Exception as e:
-                print("Email failed:", e)
+                logger.exception("Email sending failed")
 
             messages.success(
                 request,
