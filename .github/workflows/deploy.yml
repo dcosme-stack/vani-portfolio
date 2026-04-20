@@ -26,12 +26,9 @@ jobs:
             echo "Pulling latest code..."
             git pull origin main
 
-            echo "Building containers..."
-            docker compose build
-            
-            echo "Starting services..."
-            docker compose up -d
-            
+            echo "Building & starting containers..."
+            docker compose up -d --build
+
             echo "Waiting for app to be ready..."
 
             MAX_ATTEMPTS=30
@@ -50,15 +47,9 @@ jobs:
             done
 
             echo "App is ready"
-            
+
             echo "Running migrations..."
             docker compose exec web python manage.py migrate --noinput
-
-            echo "Collect static (safety)..."
-            docker compose exec web python manage.py collectstatic --noinput --clear
-
-            echo "Restarting web to apply static..."
-            docker compose restart web
 
             echo "Cleaning unused images..."
             docker system prune -f
