@@ -8,10 +8,9 @@ class StaticViewSitemap(Sitemap):
     def items(self):
         return [
             "pages:homepage",
-            "pages:about",
-            "pages:resume",
+            "pages:showreel",
+            "pages:credits",
             "media:photo_list",
-            "media:video_list",
             "contact:contact",
                 ]
 

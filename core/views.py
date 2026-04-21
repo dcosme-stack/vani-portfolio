@@ -1,3 +1,10 @@
-from django.shortcuts import render
+from django.http import HttpResponse
 
-# Create your views here.
+def robots_txt(request):
+    content = """User-agent: *
+Disallow: /admin/
+Disallow: /static/
+
+Sitemap: https://www.vanishreekulkarni.in/sitemap.xml
+"""
+    return HttpResponse(content, content_type="text/plain")
