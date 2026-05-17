@@ -10,7 +10,6 @@ class ContactMessage(models.Model):
     firstname = models.CharField(max_length=100)
     lastname = models.CharField(max_length=100)
     email = models.EmailField(max_length=254)
-    subject = models.CharField(max_length=150, blank=True)
     message = models.TextField(max_length=2000)
 
     created_at = models.DateTimeField(auto_now_add=True)

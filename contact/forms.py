@@ -8,7 +8,7 @@ class ContactForm(forms.ModelForm):
             widget=forms.HiddenInput
         )
         model = ContactMessage
-        fields = ["firstname", "lastname", "email", "subject", "message"]
+        fields = ["firstname", "lastname", "email", "message"]
 
         widgets = {
             "firstname": forms.TextInput(
@@ -27,12 +27,6 @@ class ContactForm(forms.ModelForm):
                 attrs={
                     "aria-describedby": "error-firstname",
                     "maxlength": 254,
-                }
-            ),
-            "subject": forms.TextInput(
-                attrs={
-                    "aria-describedby": "error-subject",
-                    "maxlength": 150,
                 }
             ),
             "message": forms.Textarea(
