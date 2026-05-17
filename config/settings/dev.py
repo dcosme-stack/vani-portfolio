@@ -24,6 +24,7 @@ EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
 
 CSRF_TRUSTED_ORIGINS = [
+    "http://127.0.0.1:8000",
     "https://*.ngrok.io",
     "https://*.ngrok-free.app",
 ]
@@ -49,3 +50,7 @@ CACHES = {
         },
     }
 }
+
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")

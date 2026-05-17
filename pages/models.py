@@ -74,10 +74,6 @@ class Showreel(FileCleanupModel):
         max_length=11,
         help_text="Paste only the YouTube video ID (11 characters)",
         blank=True)
-    video = models.FileField(
-        upload_to="videos/showreel",
-        blank=True,
-        null=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
